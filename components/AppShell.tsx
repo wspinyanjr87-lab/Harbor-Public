@@ -1,19 +1,33 @@
+"use client";
+
 import type { ReactNode } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ChefHat, Home, Settings, ShoppingCart, UsersRound, Utensils } from "lucide-react";
 
 const nav = [
-  { href: "/dashboard", label: "Home", icon: Home, active: true },
+  { href: "/dashboard", label: "Home", icon: Home },
   { href: "/planner", label: "Meals", icon: Utensils },
   { href: "/recipes", label: "Recipes", icon: ChefHat },
   { href: "/grocery", label: "Groceries", icon: ShoppingCart },
-  { href: "/dashboard", label: "Family", icon: UsersRound },
+  { href: "/family", label: "Family", icon: UsersRound },
   { href: "/settings", label: "Settings", icon: Settings }
 ];
 
 const mobileNav = nav;
 
+function isActiveTab(pathname: string, href: string) {
+  if (href === "/dashboard") {
+    return pathname === "/dashboard" || pathname === "/";
+  }
+
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
 export function AppShell({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
+  const currentTab = nav.find((item) => isActiveTab(pathname, item.href)) ?? nav[0];
+
   return (
     <main className="min-h-screen bg-family-cream">
       <header className="sticky top-0 z-40 border-b border-black/10 bg-white/90 px-4 py-3 backdrop-blur md:hidden">
@@ -28,19 +42,21 @@ export function AppShell({ children }: { children: ReactNode }) {
             </div>
           </Link>
           <div className="rounded-xl bg-family-berry px-3 py-2 text-xs font-bold text-white shadow-md shadow-family-berry/20">
-            Home
+            {currentTab.label}
           </div>
         </div>
 
         <nav className="mt-3 flex gap-2 overflow-x-auto pb-1">
           {mobileNav.map((item) => {
             const Icon = item.icon;
+            const active = isActiveTab(pathname, item.href);
+
             return (
               <Link
                 key={`mobile-${item.label}`}
                 href={item.href}
                 className={
-                  item.active
+                  active
                     ? "flex shrink-0 items-center gap-2 rounded-xl bg-family-berry px-3 py-2 text-xs font-bold text-white shadow-md shadow-family-berry/20"
                     : "flex shrink-0 items-center gap-2 rounded-xl bg-family-cloud px-3 py-2 text-xs font-semibold text-family-ink"
                 }
@@ -66,12 +82,14 @@ export function AppShell({ children }: { children: ReactNode }) {
         <nav className="space-y-1.5">
           {nav.map((item) => {
             const Icon = item.icon;
+            const active = isActiveTab(pathname, item.href);
+
             return (
               <Link
                 key={`${item.href}-${item.label}`}
                 href={item.href}
                 className={
-                  item.active
+                  active
                     ? "flex items-center gap-3 rounded-xl bg-family-berry px-4 py-2.5 text-sm font-bold text-white shadow-md shadow-family-berry/20"
                     : "flex items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-medium text-black/75 transition hover:bg-family-cloud hover:text-family-ink"
                 }
