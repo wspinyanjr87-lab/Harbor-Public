@@ -24,28 +24,22 @@ const houseNotes = [
 export function FamilyView() {
   return (
     <div className="space-y-5">
-      <section className="relative overflow-hidden rounded-[2rem] bg-white p-6 shadow-sm ring-1 ring-black/5 md:p-8">
-        <div className="absolute right-0 top-0 h-full w-1/2 bg-gradient-to-l from-family-honey/20 to-transparent" />
-        <div className="relative z-10 grid gap-6 xl:grid-cols-[1fr_0.85fr] xl:items-center">
-          <div>
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-family-berry">☀️ Good morning, Harbor family</p>
-            <h1 className="mt-3 text-5xl font-black leading-tight text-family-ink md:text-7xl">Today at Home</h1>
-            <p className="mt-4 max-w-2xl text-xl leading-8 text-black/60">
-              Simple plans. Shared moments. A home filled with what matters.
-            </p>
-          </div>
-          <div className="rounded-[2rem] bg-family-cloud p-5 shadow-inner">
-            <div className="rounded-[1.5rem] bg-white/80 p-5 shadow-sm">
-              <p className="text-xs font-black uppercase tracking-[0.18em] text-family-leaf">Family table</p>
-              <h2 className="mt-2 text-2xl font-black">Dinner is the anchor tonight.</h2>
-              <p className="mt-2 text-sm leading-6 text-black/55">Tacos at 6:00, list already drafted, tomorrow prep waiting below.</p>
-            </div>
-          </div>
+      <section className="relative min-h-[250px] overflow-hidden rounded-[2rem] bg-white p-6 shadow-sm ring-1 ring-black/5 md:p-8">
+        <div className="absolute inset-y-0 right-0 hidden w-[48%] overflow-hidden rounded-r-[2rem] bg-family-cloud md:block">
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/40 to-transparent" />
+          <div className="grid h-full place-items-center text-7xl opacity-80">🍽️</div>
+        </div>
+        <div className="relative z-10 flex h-full min-h-[210px] flex-col justify-center">
+          <p className="text-xs font-black uppercase tracking-[0.22em] text-family-berry">☀️ Good morning, Harbor family</p>
+          <h1 className="mt-3 text-5xl font-black leading-tight text-family-ink md:text-7xl">Today at Home</h1>
+          <p className="mt-4 max-w-2xl text-xl leading-8 text-black/60">
+            Simple plans. Shared moments. A home filled with what matters.
+          </p>
         </div>
       </section>
 
       <section className="grid gap-4 xl:grid-cols-4">
-        <div className="rounded-[2rem] bg-family-berry p-5 text-white shadow-lg shadow-family-berry/20">
+        <div className="min-h-[190px] rounded-[2rem] bg-family-berry p-5 text-white shadow-lg shadow-family-berry/20">
           <p className="text-xs font-black uppercase tracking-[0.18em] text-white/70">Tonight&apos;s Dinner</p>
           <div className="mt-5 flex items-center justify-between gap-4">
             <div>
@@ -56,13 +50,14 @@ export function FamilyView() {
           </div>
         </div>
 
-        <div className="rounded-[2rem] bg-family-leaf/25 p-5 shadow-sm ring-1 ring-black/5">
+        <div className="min-h-[190px] rounded-[2rem] bg-family-leaf/25 p-5 shadow-sm ring-1 ring-black/5">
           <p className="text-xs font-black uppercase tracking-[0.18em] text-family-leaf">Grocery Snapshot</p>
           <h2 className="mt-5 text-3xl font-black">8 items left</h2>
           <p className="mt-2 text-sm leading-6 text-black/55">You&apos;re all set for this week.</p>
+          <div className="mt-5 text-5xl">🛍️</div>
         </div>
 
-        <div className="rounded-[2rem] bg-white p-5 shadow-sm ring-1 ring-black/5">
+        <div className="min-h-[190px] rounded-[2rem] bg-white p-5 shadow-sm ring-1 ring-black/5">
           <p className="text-xs font-black uppercase tracking-[0.18em] text-family-berry">Budget Pulse</p>
           <h2 className="mt-5 text-4xl font-black">$312 <span className="text-base text-black/45">of $450</span></h2>
           <div className="mt-4 h-3 rounded-full bg-family-cloud">
@@ -71,7 +66,7 @@ export function FamilyView() {
           <p className="mt-3 text-sm font-bold text-black/50">$138 remaining</p>
         </div>
 
-        <div className="rounded-[2rem] bg-white p-5 shadow-sm ring-1 ring-black/5">
+        <div className="min-h-[190px] rounded-[2rem] bg-white p-5 shadow-sm ring-1 ring-black/5">
           <p className="text-xs font-black uppercase tracking-[0.18em] text-family-berry">Today&apos;s Rhythm</p>
           <div className="mt-4 space-y-3">
             {rhythm.map((item) => (
@@ -86,7 +81,7 @@ export function FamilyView() {
       </section>
 
       <section className="grid gap-5 xl:grid-cols-[1fr_360px]">
-        <div className="rounded-[2rem] bg-white p-5 shadow-sm ring-1 ring-black/5">
+        <div className="min-h-[290px] rounded-[2rem] bg-white p-5 shadow-sm ring-1 ring-black/5">
           <div className="mb-5 flex items-end justify-between gap-3">
             <div>
               <p className="text-xs font-black uppercase tracking-[0.2em] text-family-berry">Weekly Meal Preview</p>
@@ -108,7 +103,7 @@ export function FamilyView() {
           </div>
         </div>
 
-        <div className="rounded-[2rem] bg-white p-5 shadow-sm ring-1 ring-black/5">
+        <div className="min-h-[290px] rounded-[2rem] bg-white p-5 shadow-sm ring-1 ring-black/5">
           <div className="mb-4 flex items-end justify-between gap-4">
             <div>
               <p className="text-xs font-black uppercase tracking-[0.2em] text-family-berry">House Notes</p>
@@ -133,7 +128,7 @@ export function FamilyView() {
         </div>
       </section>
 
-      <section className="rounded-[2rem] bg-white/80 p-6 text-center shadow-sm ring-1 ring-black/5">
+      <section className="min-h-[80px] rounded-[2rem] bg-white/80 p-6 text-center shadow-sm ring-1 ring-black/5">
         <p className="text-2xl font-black text-family-ink">The best memories are made when we gather around the table. ♡</p>
       </section>
     </div>
