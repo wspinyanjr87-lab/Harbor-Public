@@ -1,106 +1,145 @@
-const todayMeals = [
-  { label: "Breakfast", value: "Egg wraps", note: "quick protein start" },
-  { label: "Lunch", value: "Pizza quesadillas", note: "kid-friendly and easy" },
-  { label: "Dinner", value: "Sheet Pan Chicken Tacos", note: "family dinner anchor" }
+const weeklyMeals = [
+  { day: "Mon", meal: "Lemon Herb Chicken", side: "with quinoa", icon: "🍗" },
+  { day: "Tue", meal: "Creamy Tomato Pasta", side: "garlic bread", icon: "🍝" },
+  { day: "Wed", meal: "Beef & Broccoli Stir Fry", side: "brown rice", icon: "🥦" },
+  { day: "Thu", meal: "Taco Night", side: "all the fixings", icon: "🌮" },
+  { day: "Fri", meal: "Salmon & Asparagus", side: "couscous", icon: "🐟" },
+  { day: "Sat", meal: "Homemade Pizza", side: "family night", icon: "🍕" },
+  { day: "Sun", meal: "Slow Cooker Chili", side: "cornbread", icon: "🥣" }
 ];
 
-const todaySchedule = [
-  { time: "7:00 AM", title: "Breakfast and backpacks", tone: "Morning launch" },
-  { time: "3:45 PM", title: "Homework reset", tone: "After-school reset" },
-  { time: "6:15 PM", title: "Dinner window", tone: "Table time" },
-  { time: "8:30 PM", title: "Kitchen close and tomorrow prep", tone: "Night reset" }
+const rhythm = [
+  { time: "8:00 AM", title: "School drop-off", done: true },
+  { time: "12:30 PM", title: "Lunch with Mom", done: false },
+  { time: "3:30 PM", title: "Soccer practice", done: true },
+  { time: "6:00 PM", title: "Family dinner", done: false, active: true }
 ];
 
-const familyNotes = [
-  "Movie night Friday after dinner.",
-  "Pack lunches before bed.",
-  "Check school folders after homework."
-];
-
-const focusCards = [
-  { title: "Grocery snapshot", value: "18 items", detail: "Estimated list is ready to review." },
-  { title: "Budget pulse", value: "$142 / $150", detail: "Starter estimate leaves a small buffer." },
-  { title: "Tomorrow prep", value: "2 reminders", detail: "Lunches and school folders before bed." }
+const houseNotes = [
+  { title: "Don&apos;t forget the bake sale this Saturday!", meta: "Maya • May 12", icon: "🧁" },
+  { title: "Guest room cleaned and ready", meta: "You • May 11", icon: "🧺" },
+  { title: "Truck oil change scheduled", meta: "Taylor • May 10", icon: "📝" }
 ];
 
 export function FamilyView() {
   return (
-    <div className="space-y-6">
-      <section className="overflow-hidden rounded-[2rem] bg-family-ink text-white shadow-2xl shadow-black/10">
-        <div className="grid gap-6 p-6 md:grid-cols-[1fr_0.85fr] md:p-8 md:items-end">
+    <div className="space-y-5">
+      <section className="relative overflow-hidden rounded-[2rem] bg-white p-6 shadow-sm ring-1 ring-black/5 md:p-8">
+        <div className="absolute right-0 top-0 h-full w-1/2 bg-gradient-to-l from-family-honey/20 to-transparent" />
+        <div className="relative z-10 grid gap-6 xl:grid-cols-[1fr_0.85fr] xl:items-center">
           <div>
-            <p className="text-sm font-black uppercase tracking-[0.2em] text-family-honey">Today at Home</p>
-            <h1 className="mt-3 text-4xl font-black leading-tight md:text-6xl">A clear view before the day gets loud.</h1>
-            <p className="mt-4 max-w-2xl text-white/70">
-              Meals, reminders, groceries, and the day&apos;s rhythm gathered into one family dashboard.
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-family-berry">☀️ Good morning, Harbor family</p>
+            <h1 className="mt-3 text-5xl font-black leading-tight text-family-ink md:text-7xl">Today at Home</h1>
+            <p className="mt-4 max-w-2xl text-xl leading-8 text-black/60">
+              Simple plans. Shared moments. A home filled with what matters.
             </p>
           </div>
-          <div className="rounded-3xl bg-white/10 p-4 ring-1 ring-white/10">
-            <p className="text-xs font-black uppercase tracking-[0.18em] text-white/50">Tonight&apos;s anchor</p>
-            <h2 className="mt-2 text-2xl font-black">Sheet Pan Chicken Tacos</h2>
-            <p className="mt-2 text-sm text-white/65">Dinner window: 6:15 PM • grocery list already drafted</p>
+          <div className="rounded-[2rem] bg-family-cloud p-5 shadow-inner">
+            <div className="rounded-[1.5rem] bg-white/80 p-5 shadow-sm">
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-family-leaf">Family table</p>
+              <h2 className="mt-2 text-2xl font-black">Dinner is the anchor tonight.</h2>
+              <p className="mt-2 text-sm leading-6 text-black/55">Tacos at 6:00, list already drafted, tomorrow prep waiting below.</p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="grid gap-4 md:grid-cols-3">
-        {focusCards.map((card) => (
-          <div key={card.title} className="rounded-3xl border border-black/5 bg-white p-5 shadow-sm">
-            <p className="text-xs font-black uppercase tracking-[0.18em] text-family-berry">{card.title}</p>
-            <h2 className="mt-2 text-3xl font-black">{card.value}</h2>
-            <p className="mt-2 text-sm leading-6 text-black/55">{card.detail}</p>
+      <section className="grid gap-4 xl:grid-cols-4">
+        <div className="rounded-[2rem] bg-family-berry p-5 text-white shadow-lg shadow-family-berry/20">
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-white/70">Tonight&apos;s Dinner</p>
+          <div className="mt-5 flex items-center justify-between gap-4">
+            <div>
+              <h2 className="text-3xl font-black leading-tight">Lemon Herb Chicken</h2>
+              <p className="mt-2 text-sm text-white/70">with roasted veggies & quinoa</p>
+            </div>
+            <div className="grid h-24 w-24 shrink-0 place-items-center rounded-full bg-white/15 text-5xl">🍗</div>
           </div>
-        ))}
+          <button className="mt-5 rounded-2xl bg-white/15 px-4 py-2 text-sm font-black">View Recipe →</button>
+        </div>
+
+        <div className="rounded-[2rem] bg-family-leaf/25 p-5 shadow-sm ring-1 ring-black/5">
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-family-leaf">Grocery Snapshot</p>
+          <h2 className="mt-5 text-3xl font-black">8 items left</h2>
+          <p className="mt-2 text-sm leading-6 text-black/55">You&apos;re all set for this week.</p>
+          <button className="mt-5 rounded-2xl bg-family-leaf px-4 py-2 text-sm font-black text-white">View List →</button>
+        </div>
+
+        <div className="rounded-[2rem] bg-white p-5 shadow-sm ring-1 ring-black/5">
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-family-berry">Budget Pulse</p>
+          <h2 className="mt-5 text-4xl font-black">$312 <span className="text-base text-black/45">of $450</span></h2>
+          <div className="mt-4 h-3 rounded-full bg-family-cloud">
+            <div className="h-3 w-[69%] rounded-full bg-family-honey" />
+          </div>
+          <p className="mt-3 text-sm font-bold text-black/50">$138 remaining</p>
+          <button className="mt-4 rounded-2xl bg-white px-4 py-2 text-sm font-black ring-1 ring-black/10">See Details →</button>
+        </div>
+
+        <div className="rounded-[2rem] bg-white p-5 shadow-sm ring-1 ring-black/5">
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-family-berry">Today&apos;s Rhythm</p>
+          <div className="mt-4 space-y-3">
+            {rhythm.map((item) => (
+              <div key={item.time} className="flex items-center gap-3 text-sm">
+                <span className={`grid h-5 w-5 place-items-center rounded-full border text-[10px] ${item.done ? "border-family-leaf bg-family-leaf text-white" : item.active ? "border-family-honey bg-family-honey/30" : "border-black/20"}`}>{item.done ? "✓" : ""}</span>
+                <span className="w-20 font-black text-black/45">{item.time}</span>
+                <span className="font-bold text-family-ink">{item.title}</span>
+              </div>
+            ))}
+          </div>
+          <button className="mt-5 rounded-2xl bg-white px-4 py-2 text-sm font-black ring-1 ring-black/10">View Calendar →</button>
+        </div>
       </section>
 
-      <section className="grid gap-5 md:grid-cols-3">
-        {todayMeals.map((meal) => (
-          <div key={meal.label} className="rounded-3xl bg-white p-5 shadow-sm ring-1 ring-black/5">
-            <p className="text-xs font-black uppercase tracking-[0.2em] text-family-berry">{meal.label}</p>
-            <h2 className="mt-2 text-2xl font-black">{meal.value}</h2>
-            <p className="mt-2 rounded-2xl bg-family-cloud px-3 py-2 text-sm font-bold text-black/55">{meal.note}</p>
+      <section className="grid gap-5 xl:grid-cols-[1fr_360px]">
+        <div className="rounded-[2rem] bg-white p-5 shadow-sm ring-1 ring-black/5">
+          <div className="mb-5 flex items-end justify-between gap-3">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.2em] text-family-berry">Weekly Meal Preview</p>
+              <h2 className="mt-1 text-2xl font-black">Meals at a glance</h2>
+            </div>
+            <button className="rounded-2xl bg-family-cloud px-4 py-2 text-sm font-black">Add to Planner →</button>
           </div>
-        ))}
-      </section>
+          <div className="grid gap-3 md:grid-cols-7">
+            {weeklyMeals.map((meal) => (
+              <div key={meal.day} className="rounded-2xl border border-black/5 bg-family-cream p-3 text-center">
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-family-berry">{meal.day}</p>
+                <div className="mx-auto my-3 grid h-16 w-16 place-items-center rounded-full bg-white text-4xl shadow-sm">{meal.icon}</div>
+                <h3 className="text-sm font-black leading-tight">{meal.meal}</h3>
+                <p className="mt-1 text-xs font-semibold text-black/45">{meal.side}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-5 rounded-2xl bg-family-berry/10 px-4 py-3 text-sm font-bold text-family-berry">
+            ❤️ Tip: Double the Tuesday pasta to save time on a busy night.
+          </div>
+        </div>
 
-      <section className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="product-card rounded-3xl p-5">
+        <div className="rounded-[2rem] bg-white p-5 shadow-sm ring-1 ring-black/5">
           <div className="mb-4 flex items-end justify-between gap-4">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.2em] text-family-berry">Schedule</p>
-              <h2 className="mt-1 text-2xl font-black">Today&apos;s rhythm</h2>
+              <p className="text-xs font-black uppercase tracking-[0.2em] text-family-berry">House Notes</p>
+              <h2 className="mt-1 text-2xl font-black">Quick reminders</h2>
             </div>
-            <span className="rounded-full bg-family-leaf px-3 py-1 text-xs font-black text-white">4 beats</span>
+            <span className="text-xl font-black text-black/35">⋮</span>
           </div>
           <div className="space-y-3">
-            {todaySchedule.map((item) => (
-              <div key={item.time} className="grid gap-3 rounded-2xl bg-family-cloud p-4 md:grid-cols-[90px_1fr] md:items-center">
+            {houseNotes.map((note) => (
+              <div key={note.title} className="flex gap-3 rounded-2xl bg-family-cloud p-4">
+                <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white text-xl shadow-sm">{note.icon}</div>
                 <div>
-                  <div className="text-sm font-black text-family-leaf">{item.time}</div>
-                  <div className="text-xs font-bold text-black/40">{item.tone}</div>
+                  <div className="font-black leading-tight" dangerouslySetInnerHTML={{ __html: note.title }} />
+                  <div className="mt-1 text-xs font-bold text-black/40">{note.meta}</div>
                 </div>
-                <div className="font-black">{item.title}</div>
               </div>
             ))}
           </div>
+          <button className="mt-5 flex w-full items-center justify-between rounded-2xl bg-white px-4 py-3 font-black ring-1 ring-black/10">
+            Add Note <span>+</span>
+          </button>
         </div>
+      </section>
 
-        <div className="product-card rounded-3xl p-5">
-          <div className="mb-4 flex items-end justify-between gap-4">
-            <div>
-              <p className="text-xs font-black uppercase tracking-[0.2em] text-family-berry">Family Board</p>
-              <h2 className="mt-1 text-2xl font-black">House notes</h2>
-            </div>
-            <span className="rounded-full bg-family-honey/30 px-3 py-1 text-xs font-black text-black/55">starter</span>
-          </div>
-          <div className="space-y-3">
-            {familyNotes.map((note) => (
-              <div key={note} className="rounded-2xl bg-white p-4 font-semibold shadow-sm ring-1 ring-black/5">
-                {note}
-              </div>
-            ))}
-          </div>
-        </div>
+      <section className="rounded-[2rem] bg-white/80 p-6 text-center shadow-sm ring-1 ring-black/5">
+        <p className="text-2xl font-black text-family-ink">The best memories are made when we gather around the table. ♡</p>
       </section>
     </div>
   );
