@@ -54,14 +54,12 @@ export function FamilyView() {
             </div>
             <div className="grid h-24 w-24 shrink-0 place-items-center rounded-full bg-white/15 text-5xl">🍗</div>
           </div>
-          <button className="mt-5 rounded-2xl bg-white/15 px-4 py-2 text-sm font-black">View Recipe →</button>
         </div>
 
         <div className="rounded-[2rem] bg-family-leaf/25 p-5 shadow-sm ring-1 ring-black/5">
           <p className="text-xs font-black uppercase tracking-[0.18em] text-family-leaf">Grocery Snapshot</p>
           <h2 className="mt-5 text-3xl font-black">8 items left</h2>
           <p className="mt-2 text-sm leading-6 text-black/55">You&apos;re all set for this week.</p>
-          <button className="mt-5 rounded-2xl bg-family-leaf px-4 py-2 text-sm font-black text-white">View List →</button>
         </div>
 
         <div className="rounded-[2rem] bg-white p-5 shadow-sm ring-1 ring-black/5">
@@ -71,7 +69,6 @@ export function FamilyView() {
             <div className="h-3 w-[69%] rounded-full bg-family-honey" />
           </div>
           <p className="mt-3 text-sm font-bold text-black/50">$138 remaining</p>
-          <button className="mt-4 rounded-2xl bg-white px-4 py-2 text-sm font-black ring-1 ring-black/10">See Details →</button>
         </div>
 
         <div className="rounded-[2rem] bg-white p-5 shadow-sm ring-1 ring-black/5">
@@ -85,7 +82,6 @@ export function FamilyView() {
               </div>
             ))}
           </div>
-          <button className="mt-5 rounded-2xl bg-white px-4 py-2 text-sm font-black ring-1 ring-black/10">View Calendar →</button>
         </div>
       </section>
 
@@ -96,7 +92,6 @@ export function FamilyView() {
               <p className="text-xs font-black uppercase tracking-[0.2em] text-family-berry">Weekly Meal Preview</p>
               <h2 className="mt-1 text-2xl font-black">Meals at a glance</h2>
             </div>
-            <button className="rounded-2xl bg-family-cloud px-4 py-2 text-sm font-black">Add to Planner →</button>
           </div>
           <div className="grid gap-3 md:grid-cols-7">
             {weeklyMeals.map((meal) => (
