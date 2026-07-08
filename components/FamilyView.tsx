@@ -1,3 +1,5 @@
+import HomeBannerRotator from "./home/HomeBannerRotator";
+
 const weeklyMeals = [
   { day: "Mon", meal: "Lemon Herb Chicken", side: "with quinoa", icon: "🍗" },
   { day: "Tue", meal: "Creamy Tomato Pasta", side: "garlic bread", icon: "🍝" },
@@ -24,19 +26,7 @@ const houseNotes = [
 export function FamilyView() {
   return (
     <div className="space-y-5">
-      <section className="relative min-h-[250px] overflow-hidden rounded-[2rem] bg-white p-6 shadow-sm ring-1 ring-black/5 md:p-8">
-        <div className="absolute inset-y-0 right-0 hidden w-[48%] overflow-hidden rounded-r-[2rem] bg-family-cloud md:block">
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/40 to-transparent" />
-          <div className="grid h-full place-items-center text-7xl opacity-80">🍽️</div>
-        </div>
-        <div className="relative z-10 flex h-full min-h-[210px] flex-col justify-center">
-          <p className="text-xs font-black uppercase tracking-[0.22em] text-family-berry">☀️ Good morning, Harbor family</p>
-          <h1 className="mt-3 text-5xl font-black leading-tight text-family-ink md:text-7xl">Today at Home</h1>
-          <p className="mt-4 max-w-2xl text-xl leading-8 text-black/60">
-            Simple plans. Shared moments. A home filled with what matters.
-          </p>
-        </div>
-      </section>
+      <HomeBannerRotator />
 
       <section className="grid gap-4 xl:grid-cols-4">
         <div className="min-h-[190px] rounded-[2rem] bg-family-berry p-5 text-white shadow-lg shadow-family-berry/20">
