@@ -8,6 +8,7 @@ type HomeBanner = {
   eyebrow: string;
   title: string;
   subtitle: string;
+  imagePath?: string;
   visual: BannerVisual;
   theme: {
     background: string;
@@ -21,6 +22,7 @@ const banners: HomeBanner[] = [
     eyebrow: "Morning rhythm",
     title: "Today at Home",
     subtitle: "Meals, reminders, and small wins gathered into one calm place.",
+    imagePath: "/banners/home-banner-1.png",
     visual: "table",
     theme: {
       background: "from-[#fff4df] via-[#ffe8d2] to-[#f9d9c5]",
@@ -149,7 +151,19 @@ export default function HomeBannerRotator() {
     <section
       className={`relative overflow-hidden rounded-[1.75rem] bg-gradient-to-br ${activeBanner.theme.background} px-5 py-5 shadow-sm md:min-h-[190px] md:px-7 md:py-6`}
     >
-      <div className="flex min-h-[142px] items-center justify-between gap-5 md:min-h-[170px]">
+      {activeBanner.imagePath ? (
+        <>
+          <img
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full object-cover"
+            src={activeBanner.imagePath}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-family-cream/95 via-family-cream/75 to-family-cream/10" />
+        </>
+      ) : null}
+
+      <div className="relative flex min-h-[142px] items-center justify-between gap-5 md:min-h-[170px]">
         <div className="max-w-2xl">
           <p className="text-xs font-black uppercase tracking-[0.2em]" style={{ color: activeBanner.theme.accent }}>
             {activeBanner.eyebrow}
@@ -160,7 +174,9 @@ export default function HomeBannerRotator() {
           </p>
         </div>
 
-        <DecorativeArt visual={activeBanner.visual} accent={activeBanner.theme.accent} glow={activeBanner.theme.glow} />
+        {activeBanner.imagePath ? null : (
+          <DecorativeArt visual={activeBanner.visual} accent={activeBanner.theme.accent} glow={activeBanner.theme.glow} />
+        )}
       </div>
 
       <div className="absolute bottom-4 left-5 flex gap-2 md:left-7">
