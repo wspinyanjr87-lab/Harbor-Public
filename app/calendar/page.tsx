@@ -2,11 +2,19 @@ import HarborShell from "@/components/harbor/HarborShell";
 import { calendarEventsByDay } from "@/lib/harborStarterData";
 import { CalendarDays, Check, ChevronLeft, ChevronRight, Clock, Heart, Plus, Users } from "lucide-react";
 
+type CalendarEvent = { label: string; tone: "gold" | "sky" | "emerald" | "purple" };
+type CalendarDay = {
+  number: string;
+  muted?: boolean;
+  today?: boolean;
+  events?: CalendarEvent[];
+};
+
 const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-const days = [
+const days: CalendarDay[] = [
   { number: "29", muted: true },
   { number: "30", muted: true },
-  ...Array.from({ length: 31 }, (_, index) => {
+  ...Array.from({ length: 31 }, (_, index): CalendarDay => {
     const number = String(index + 1);
     return {
       number,
