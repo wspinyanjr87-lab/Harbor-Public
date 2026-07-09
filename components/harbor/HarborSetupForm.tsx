@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 import { Bell, Cake, CalendarDays, CheckCircle2, Heart, Home, LockKeyhole, Mail, Palette, Plus, Save, Shield, Trash2, UserRound, Users, Utensils } from "lucide-react";
 import HarborNextStep from "@/components/harbor/HarborNextStep";
 
@@ -54,47 +55,140 @@ const defaultPreferences: Preferences = {
   notifications: false
 };
 
+type SetupPayload = {
+  householdName: string;
+  primaryEmail: string;
+  people: Person[];
+  preferences: Preferences;
+  savedAt?: string;
+};
+
+function normalizeSetup(setup: Partial<SetupPayload> | null): SetupPayload {
+  return {
+    householdName: setup?.householdName || "The Harbor Home",
+    primaryEmail: setup?.primaryEmail || "",
+    people: setup?.people?.length ? setup.people : defaultPeople,
+    preferences: { ...defaultPreferences, ...(setup?.preferences || {}) },
+    savedAt: setup?.savedAt,
+  };
+}
+
 export default function HarborSetupForm() {
+  const router = useRouter();
   const [householdName, setHouseholdName] = useState("The Harbor Home");
   const [primaryEmail, setPrimaryEmail] = useState("");
   const [people, setPeople] = useState<Person[]>(defaultPeople);
   const [draftPerson, setDraftPerson] = useState<Person>({ id: "draft", name: "", type: "Adult", birthday: "", access: "Viewer" });
   const [preferences, setPreferences] = useState<Preferences>(defaultPreferences);
   const [savedAt, setSavedAt] = useState<string | null>(null);
-  const [message, setMessage] = useState("Setup is saved in this browser until Harbor database saving is fully connected.");
+  const [databaseSaved, setDatabaseSaved] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+  const [message, setMessage] = useState("Loading setup center...");
 
   useEffect(() => {
-    const stored = window.localStorage.getItem(storageKey);
-    if (!stored) return;
+    let mounted = true;
 
-    try {
-      const parsed = JSON.parse(stored) as {
-        householdName?: string;
-        primaryEmail?: string;
-        people?: Person[];
-        preferences?: Preferences;
-        savedAt?: string;
-      };
-
-      if (parsed.householdName) setHouseholdName(parsed.householdName);
-      if (parsed.primaryEmail) setPrimaryEmail(parsed.primaryEmail);
-      if (parsed.people?.length) setPeople(parsed.people);
-      if (parsed.preferences) setPreferences(parsed.preferences);
-      if (parsed.savedAt) setSavedAt(parsed.savedAt);
-    } catch {
-      setMessage("Saved setup could not be loaded. You can safely start again.");
+    function applySetup(setup: Partial<SetupPayload> | null) {
+      const normalized = normalizeSetup(setup);
+      setHouseholdName(normalized.householdName);
+      setPrimaryEmail(normalized.primaryEmail);
+      setPeople(normalized.people);
+      setPreferences(normalized.preferences);
+      if (normalized.savedAt) setSavedAt(normalized.savedAt);
     }
+
+    async function loadSetup() {
+      let browserSetup: SetupPayload | null = null;
+
+      try {
+        const stored = window.localStorage.getItem(storageKey);
+        if (stored) {
+          browserSetup = normalizeSetup(JSON.parse(stored) as Partial<SetupPayload>);
+          applySetup(browserSetup);
+        }
+      } catch {
+        setMessage("Saved browser setup could not be loaded. You can safely start again.");
+      }
+
+      try {
+        const response = await fetch("/api/setup", { cache: "no-store" });
+        if (!response.ok) throw new Error("Database setup unavailable.");
+
+        const data = (await response.json()) as { setup?: Partial<SetupPayload> | null };
+        if (!mounted) return;
+
+        if (data.setup) {
+          const databaseSetup = normalizeSetup(data.setup);
+          applySetup(databaseSetup);
+          window.localStorage.setItem(storageKey, JSON.stringify(databaseSetup));
+          setDatabaseSaved(true);
+          setMessage("Loaded from Harbor database.");
+        } else {
+          setMessage(browserSetup ? "Loaded from this browser. Database setup is empty." : "No saved setup yet. Start here.");
+        }
+      } catch {
+        if (mounted) {
+          setDatabaseSaved(false);
+          setMessage(browserSetup ? "Database load unavailable. Using this browser setup." : "Database load unavailable. Start with browser setup.");
+        }
+      }
+    }
+
+    loadSetup();
+
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   const enabledCount = useMemo(() => Object.values(preferences).filter(Boolean).length, [preferences]);
   const isReady = householdName.trim().length > 1 && people.some((person) => person.name.trim().length > 1) && enabledCount > 0;
 
-  function saveSetup(nextMessage = "Setup saved for this browser preview.") {
+  async function saveSetup(nextMessage = "Setup saved.") {
     const now = new Date().toLocaleString();
     const payload = { householdName, primaryEmail, people, preferences, savedAt: now };
     window.localStorage.setItem(storageKey, JSON.stringify(payload));
     setSavedAt(now);
-    setMessage(nextMessage);
+
+    if (!isReady) {
+      setMessage(nextMessage);
+      return false;
+    }
+
+    setIsSaving(true);
+
+    try {
+      const response = await fetch("/api/setup", {
+        body: JSON.stringify(payload),
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+      });
+
+      if (!response.ok) throw new Error("Database save unavailable.");
+
+      const data = (await response.json()) as { setup?: Partial<SetupPayload> };
+      const saved = normalizeSetup({ ...payload, ...(data.setup || {}) });
+      window.localStorage.setItem(storageKey, JSON.stringify({ ...saved, savedAt: now }));
+      setDatabaseSaved(true);
+      setMessage("Saved to Harbor database.");
+      return true;
+    } catch {
+      setDatabaseSaved(false);
+      setMessage("Saved in this browser. Database save unavailable.");
+      return true;
+    } finally {
+      setIsSaving(false);
+    }
+  }
+
+  async function finishSetup() {
+    const saved = await saveSetup(
+      isReady ? "Setup saved. Continue to Meal Planner." : "Add a household name, one person, and at least one enabled section before finishing.",
+    );
+
+    if (saved && isReady) {
+      router.push("/planner");
+    }
   }
 
   function addPerson() {
@@ -127,10 +221,10 @@ export default function HarborSetupForm() {
           <p className="mt-3 max-w-3xl text-lg leading-8 text-slate-400">Add your people, decide who can edit what, pick your household rhythm, save the setup, then continue into meal planning.</p>
         </div>
         <div className="flex flex-wrap gap-3">
-          <button className="rounded-2xl border border-[#D4AF37]/30 bg-[#D4AF37]/10 px-6 py-3 text-sm font-bold text-[#D4AF37] transition hover:bg-[#D4AF37]/15" onClick={() => saveSetup()} type="button">
-            <span className="inline-flex items-center gap-2"><Save className="h-4 w-4" /> Save Setup</span>
+          <button className="rounded-2xl border border-[#D4AF37]/30 bg-[#D4AF37]/10 px-6 py-3 text-sm font-bold text-[#D4AF37] transition hover:bg-[#D4AF37]/15 disabled:opacity-60" disabled={isSaving} onClick={() => saveSetup()} type="button">
+            <span className="inline-flex items-center gap-2"><Save className="h-4 w-4" /> {isSaving ? "Saving..." : "Save Setup"}</span>
           </button>
-          <a className="rounded-2xl bg-[#D4AF37] px-6 py-3 text-sm font-bold text-slate-950 transition hover:bg-[#B5942B]" href={isReady ? "/planner" : "#setup-required"} onClick={() => saveSetup(isReady ? "Setup saved. Continue to Meal Planner." : "Add a household name, one person, and at least one enabled section before finishing.")}>{isReady ? "Finish Setup" : "Finish Setup"}</a>
+          <button className="rounded-2xl bg-[#D4AF37] px-6 py-3 text-sm font-bold text-slate-950 transition hover:bg-[#B5942B] disabled:opacity-60" disabled={isSaving} onClick={finishSetup} type="button">Finish Setup</button>
         </div>
       </header>
 
@@ -274,7 +368,7 @@ export default function HarborSetupForm() {
                 ["At least one person", people.length > 0],
                 ["At least one section enabled", enabledCount > 0],
                 ["Saved in browser", Boolean(savedAt)],
-                ["Database saving pending", false]
+                ["Saved to Harbor database", databaseSaved]
               ].map(([item, complete]) => (
                 <div className="flex items-center gap-3" key={String(item)}>
                   <CheckCircle2 className={`h-5 w-5 ${complete ? "text-[#D4AF37]" : "text-slate-600"}`} />
@@ -288,7 +382,7 @@ export default function HarborSetupForm() {
 
       <HarborNextStep
         title="Plan the first budget-friendly week."
-        text="Once setup is saved, continue into meals. The current preview saves in browser storage. Database saving comes when we wire Harbor Supabase tables."
+        text="Once setup is saved, continue into meals. Harbor saves to the database when available and falls back to this browser if the database is unavailable."
         href={isReady ? "/planner" : "#setup-required"}
         action={isReady ? "Continue to Meal Planner" : "Finish setup first"}
       />

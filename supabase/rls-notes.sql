@@ -10,6 +10,7 @@
 -- alter table calendar_items enable row level security;
 -- alter table memory_notes enable row level security;
 -- alter table notification_preferences enable row level security;
+-- alter table harbor_setups enable row level security;
 
 -- Policy goal:
 -- A signed-in user should only read or change rows for workspaces where they are a member.

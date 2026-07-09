@@ -62,7 +62,7 @@ export default function CalendarPage() {
 
           <div className="flex flex-wrap items-center gap-4">
             <div className="harbor-glass flex rounded-xl p-1">
-              <button className="rounded-lg bg-[#D4AF37]/20 px-4 py-2 text-xs font-bold uppercase tracking-widest text-[#D4AF37]" type="button">Month</button>
+              <button className="rounded-lg bg-[#D4AF37]/20 px-4 py-2 text-xs font-bold uppercase tracking-widest text-[#D4AF37]" disabled type="button">Month</button>
               <a className="rounded-lg px-4 py-2 text-xs font-bold uppercase tracking-widest text-slate-400 transition hover:text-white" href="/settings">Week</a>
             </div>
             <a className="flex items-center gap-2 rounded-xl bg-[#D4AF37] px-5 py-3 text-sm font-bold text-slate-950 shadow-lg shadow-[#D4AF37]/10 transition hover:bg-[#B5942B]" href="/settings">
