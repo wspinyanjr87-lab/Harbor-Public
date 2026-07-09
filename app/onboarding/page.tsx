@@ -1,4 +1,5 @@
 import HarborShell from "@/components/harbor/HarborShell";
+import HarborNextStep from "@/components/harbor/HarborNextStep";
 import { ArrowRight, Baby, CalendarDays, CheckCircle2, Heart, Home, Shield, Sparkles, UserPlus, Users, Utensils } from "lucide-react";
 
 const setupSteps = [
@@ -16,9 +17,9 @@ const starterPeople = [
 ];
 
 const launchCards = [
-  { title: "Meals", text: "Start with a small recipe shelf and build from there.", icon: Utensils },
-  { title: "Calendar", text: "Add practices, pickups, appointments, and family time.", icon: CalendarDays },
-  { title: "Family", text: "Give each person the right visibility and responsibilities.", icon: Users }
+  { title: "Meals", text: "Start with a small recipe shelf and build from there.", href: "/planner", icon: Utensils },
+  { title: "Calendar", text: "Add practices, pickups, appointments, and family time.", href: "/calendar", icon: CalendarDays },
+  { title: "Family", text: "Give each person the right visibility and responsibilities.", href: "/settings", icon: Users }
 ];
 
 export default function OnboardingPage() {
@@ -73,7 +74,7 @@ export default function OnboardingPage() {
                     <div className="mb-4 grid h-11 w-11 place-items-center rounded-2xl bg-[#D4AF37]/10 text-[#D4AF37]"><Icon className="h-5 w-5" /></div>
                     <h3 className="text-lg font-bold text-white">{person.name}</h3>
                     <p className="mt-1 text-sm text-slate-400">{person.type}</p>
-                    <div className="mt-4 rounded-2xl border border-dashed border-[#D4AF37]/25 p-4 text-sm text-slate-500">Name field, birthday, chores, notes, and access level will live here.</div>
+                    <div className="mt-4 rounded-2xl border border-dashed border-[#D4AF37]/25 p-4 text-sm text-slate-500">Name field, birthday, chores, notes, and access level continue in Setup Center.</div>
                   </article>
                 );
               })}
@@ -104,14 +105,21 @@ export default function OnboardingPage() {
           {launchCards.map((card) => {
             const Icon = card.icon;
             return (
-              <article className="rounded-3xl border border-[#D4AF37]/15 bg-[#010411] p-6" key={card.title}>
+              <a className="rounded-3xl border border-[#D4AF37]/15 bg-[#010411] p-6 transition hover:border-[#D4AF37]/35 hover:bg-white/[0.03]" href={card.href} key={card.title}>
                 <Icon className="mb-4 h-7 w-7 text-[#D4AF37]" />
                 <h2 className="harbor-serif text-2xl font-semibold text-white">{card.title}</h2>
                 <p className="mt-2 text-sm leading-6 text-slate-400">{card.text}</p>
-              </article>
+              </a>
             );
           })}
         </section>
+
+        <HarborNextStep
+          title="Finish the details in Setup Center."
+          text="Onboarding shows the path. Setup Center is where the household name, people, roles, and enabled sections become clear before planning meals."
+          href="/settings"
+          action="Continue to Setup Center"
+        />
       </div>
     </HarborShell>
   );
