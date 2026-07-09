@@ -1,6 +1,7 @@
 import HarborShell from "@/components/harbor/HarborShell";
+import HarborNextStep from "@/components/harbor/HarborNextStep";
 import { budgetStarterRecipes, featuredBudgetIngredients, weeklyBudgetMeals } from "@/lib/harborStarterData";
-import { CalendarCheck, ChefHat, Clock, DollarSign, Flame, ListChecks, Plus, Search, Users, X } from "lucide-react";
+import { CalendarCheck, ChefHat, Clock, DollarSign, Flame, ListChecks, Plus, Search, Users } from "lucide-react";
 
 const filters = ["All", "Budget", "Quick Fix", "One Pan", "Family Dinner"];
 
@@ -17,7 +18,7 @@ export default function PlannerPage() {
         </div>
       </header>
 
-      <div className="mx-auto w-full max-w-7xl px-6 py-8 lg:px-10">
+      <div className="mx-auto w-full max-w-7xl space-y-8 px-6 py-8 lg:px-10">
         <div className="grid gap-8 xl:grid-cols-[1fr_384px]">
           <section className="space-y-8">
             <div className="flex flex-col gap-4 rounded-3xl border border-white/5 bg-white/5 p-4 md:flex-row md:items-center md:justify-between">
@@ -27,7 +28,7 @@ export default function PlannerPage() {
               </div>
               <div className="flex flex-wrap gap-3">
                 {filters.map((filter, index) => (
-                  <button className={`rounded-xl px-4 py-2 text-xs font-bold uppercase tracking-widest ${index === 0 ? "bg-[#D4AF37] text-slate-950" : "bg-slate-800 text-slate-300 hover:bg-slate-700"}`} key={filter} type="button">{filter}</button>
+                  <a className={`rounded-xl px-4 py-2 text-xs font-bold uppercase tracking-widest ${index === 0 ? "bg-[#D4AF37] text-slate-950" : "bg-slate-800 text-slate-300 hover:bg-slate-700"}`} href="/planner" key={filter}>{filter}</a>
                 ))}
               </div>
             </div>
@@ -63,14 +64,13 @@ export default function PlannerPage() {
               <h2 className="harbor-serif mb-5 flex items-center gap-2 text-2xl font-semibold text-[#D4AF37]"><CalendarCheck className="h-5 w-5" /> Budget Week Table</h2>
               <div className="space-y-4">
                 {weeklyBudgetMeals.map((item) => (
-                  <div className="flex items-center gap-4" key={item.day}>
+                  <a className="flex items-center gap-4 rounded-2xl p-2 transition hover:bg-white/[0.04]" href="/grocery" key={item.day}>
                     <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-slate-800 text-xs font-bold uppercase text-[#D4AF37]">{item.day}</div>
                     <div className="flex-1">
                       <p className="font-semibold text-slate-100">{item.meal}</p>
                       <p className="text-[10px] uppercase tracking-widest text-slate-500">{item.type}</p>
                     </div>
-                    <button className="text-slate-500 hover:text-red-300" type="button"><X className="h-4 w-4" /></button>
-                  </div>
+                  </a>
                 ))}
               </div>
             </section>
@@ -95,6 +95,13 @@ export default function PlannerPage() {
             </section>
           </aside>
         </div>
+
+        <HarborNextStep
+          title="Turn meals into groceries."
+          text="The next step after choosing starter meals is checking the grocery list that supports the budget week."
+          href="/grocery"
+          action="Continue to Grocery List"
+        />
       </div>
     </HarborShell>
   );
