@@ -1,44 +1,17 @@
 import HarborShell from "@/components/harbor/HarborShell";
-import { Beef, Carrot, Coffee, Milk, Package, Plus, PlusCircle, Trash2 } from "lucide-react";
+import { groceryCategories } from "@/lib/harborStarterData";
+import { Beef, Carrot, Coffee, Milk, Package, Plus, PlusCircle, ShoppingBasket, Trash2 } from "lucide-react";
 
-const categories = [
-  {
-    name: "Produce",
-    icon: Carrot,
-    items: [
-      { name: "Asparagus (2 Bunches)", checked: true },
-      { name: "Lemons (3)" },
-      { name: "Garlic (2 bulbs)" },
-      { name: "Blueberries (2 pints)" }
-    ]
-  },
-  {
-    name: "Proteins",
-    icon: Beef,
-    items: [
-      { name: "Fresh Salmon (2 lbs)", checked: true },
-      { name: "Farm Eggs (2 Dozen)", checked: true }
-    ]
-  },
-  {
-    name: "Dairy",
-    icon: Milk,
-    items: [
-      { name: "Greek Yogurt (1 tub)", checked: true },
-      { name: "Salted Butter", checked: true }
-    ]
-  },
-  {
-    name: "Pantry",
-    icon: Package,
-    items: [
-      { name: "Extra Virgin Olive Oil", checked: true },
-      { name: "Whole Wheat Bread", checked: true },
-      { name: "Wildflower Honey", checked: true },
-      { name: "Raw Almonds" }
-    ]
-  }
-];
+const categoryIcons = {
+  Proteins: Beef,
+  Pantry: Package,
+  "Frozen / Produce": Carrot,
+  Dairy: Milk,
+  "Breakfast / Snacks": ShoppingBasket
+};
+
+const totalItems = groceryCategories.reduce((sum, category) => sum + category.items.length, 0);
+const purchasedItems = groceryCategories.reduce((sum, category) => sum + category.items.filter((item) => item.checked).length, 0);
 
 export default function GroceryPage() {
   return (
@@ -46,18 +19,19 @@ export default function GroceryPage() {
       <div className="mx-auto w-full max-w-7xl space-y-8 px-6 py-8 lg:px-12">
         <header className="flex flex-col gap-6 border-b border-white/5 pb-8 md:flex-row md:items-end md:justify-between">
           <div>
-            <h1 className="harbor-serif text-6xl font-semibold text-[#D4AF37]">Grocery List</h1>
-            <p className="mt-2 text-lg font-light text-slate-400">Stocking the Harbor for the week of Oct 14th</p>
+            <p className="text-xs font-bold uppercase tracking-[0.32em] text-[#D4AF37]/80">Free / Standard Starter List</p>
+            <h1 className="harbor-serif mt-2 text-6xl font-semibold text-[#D4AF37]">Grocery List</h1>
+            <p className="mt-2 text-lg font-light text-slate-400">Budget staples for a family week, not fancy launch-demo groceries.</p>
           </div>
           <div className="flex items-center gap-6">
             <div className="text-right">
               <p className="mb-1 text-xs uppercase tracking-widest text-slate-500">Estimated Total</p>
-              <p className="harbor-serif text-3xl font-semibold text-white">$142.50</p>
+              <p className="harbor-serif text-3xl font-semibold text-white">$85–$125</p>
             </div>
             <div className="h-12 w-px bg-white/10" />
             <div className="text-right">
               <p className="mb-1 text-xs uppercase tracking-widest text-slate-500">Stock Level</p>
-              <p className="harbor-serif text-3xl font-semibold text-[#D4AF37]">8 of 12</p>
+              <p className="harbor-serif text-3xl font-semibold text-[#D4AF37]">{purchasedItems} of {totalItems}</p>
             </div>
           </div>
         </header>
@@ -70,8 +44,8 @@ export default function GroceryPage() {
               ))}
             </div>
 
-            {categories.map((category) => {
-              const Icon = category.icon;
+            {groceryCategories.map((category) => {
+              const Icon = categoryIcons[category.name as keyof typeof categoryIcons] ?? ShoppingBasket;
               return (
                 <section key={category.name}>
                   <h2 className="harbor-serif mb-4 flex items-center gap-2 text-2xl font-semibold text-[#D4AF37]"><Icon className="h-5 w-5" /> {category.name}</h2>
@@ -102,10 +76,7 @@ export default function GroceryPage() {
                 <label className="block">
                   <span className="mb-1 block text-xs uppercase tracking-widest text-slate-500">Category</span>
                   <select className="w-full rounded-xl border border-white/10 bg-[#020617] px-4 py-3 text-white outline-none transition focus:border-[#D4AF37]">
-                    <option>Produce</option>
-                    <option>Proteins</option>
-                    <option>Dairy</option>
-                    <option>Pantry</option>
+                    {groceryCategories.map((category) => <option key={category.name}>{category.name}</option>)}
                   </select>
                 </label>
                 <button className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#D4AF37] py-3 font-bold text-slate-950 transition hover:bg-[#B5942B]" type="button"><Plus className="h-4 w-4" /> Add to List</button>
@@ -113,13 +84,15 @@ export default function GroceryPage() {
             </section>
 
             <section className="harbor-glass rounded-3xl p-6">
-              <h2 className="harbor-serif mb-4 text-2xl font-semibold text-white">Quick Suggestion</h2>
+              <h2 className="harbor-serif mb-4 text-2xl font-semibold text-white">Budget Suggestion</h2>
               <div className="flex items-center justify-between rounded-xl border border-white/5 bg-white/5 p-3">
-                <div className="flex items-center gap-3"><Coffee className="h-5 w-5 text-[#D4AF37]" /><span className="text-sm text-slate-300">Light Roast Coffee</span></div>
+                <div className="flex items-center gap-3"><Coffee className="h-5 w-5 text-[#D4AF37]" /><span className="text-sm text-slate-300">Oatmeal or cereal</span></div>
                 <button className="text-[#D4AF37] transition hover:scale-110" type="button"><PlusCircle className="h-5 w-5" /></button>
               </div>
-              <p className="mt-4 text-center text-xs italic text-slate-500">You usually buy this every 2 weeks.</p>
+              <p className="mt-4 text-center text-xs italic text-slate-500">Cheap breakfast staples matter more than fancy extras in the default list.</p>
             </section>
+
+            <a className="block rounded-3xl border border-[#D4AF37]/20 bg-[#D4AF37]/10 p-5 text-center text-sm font-bold text-[#D4AF37] transition hover:bg-[#D4AF37] hover:text-slate-950" href="/planner">Back to Budget Meals</a>
           </aside>
         </section>
       </div>
