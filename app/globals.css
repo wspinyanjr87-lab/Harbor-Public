@@ -1,19 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
+  --harbor-navy: #020617;
+  --harbor-sidebar: #010411;
+  --harbor-gold: #d4af37;
+  --harbor-gold-soft: #b5942b;
 }
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  background: var(--harbor-navy);
+}
+
 body {
   margin: 0;
-  background: #fff8ef;
-  color: #101828;
+  background: var(--harbor-navy);
+  color: #e2e8f0;
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+}
+
+.harbor-serif {
+  font-family: "Crimson Pro", Georgia, serif;
+}
+
+.harbor-glass {
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(14px);
 }
 
 .product-card {
