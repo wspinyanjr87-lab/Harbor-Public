@@ -1,30 +1,21 @@
 import HarborShell from "@/components/harbor/HarborShell";
-import { Briefcase, Check, ChevronLeft, ChevronRight, Clock, Heart, Music, Plus } from "lucide-react";
+import { calendarEventsByDay } from "@/lib/harborStarterData";
+import { CalendarDays, Check, ChevronLeft, ChevronRight, Clock, Heart, Plus, Users } from "lucide-react";
 
 const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const days = [
   { number: "29", muted: true },
   { number: "30", muted: true },
-  { number: "1" },
-  { number: "2", events: [{ label: "Family Dinner", tone: "gold" }] },
-  { number: "3" },
-  { number: "4", events: [{ label: "Ballet Class", tone: "sky" }] },
-  { number: "5" },
-  { number: "6" },
-  { number: "7", today: true, events: [{ label: "Project Sync", tone: "emerald" }, { label: "Yoga Session", tone: "purple" }] },
-  { number: "8" },
-  { number: "9", events: [{ label: "Grocery Run", tone: "gold" }] },
-  { number: "10" },
-  { number: "11", events: [{ label: "School Pickup", tone: "sky" }] },
-  { number: "12" },
-  { number: "13" },
-  { number: "14" },
-  { number: "15" },
-  { number: "16" },
-  { number: "17" },
-  { number: "18" },
-  { number: "19" },
-  { number: "20" }
+  ...Array.from({ length: 31 }, (_, index) => {
+    const number = String(index + 1);
+    return {
+      number,
+      today: number === "14",
+      events: calendarEventsByDay[number]
+    };
+  }),
+  { number: "1", muted: true },
+  { number: "2", muted: true }
 ];
 
 const toneClasses = {
@@ -35,15 +26,15 @@ const toneClasses = {
 };
 
 const agenda = [
-  { time: "08:30 AM - 09:30 AM", title: "Q4 Planning Sync", detail: "Executive Boardroom • William", icon: Briefcase, border: "border-[#D4AF37]", text: "text-[#D4AF37]" },
-  { time: "03:00 PM - 04:30 PM", title: "Lily's Cello Rehearsal", detail: "School Auditorium • Drop off needed", icon: Music, border: "border-sky-400", text: "text-sky-300" },
-  { time: "06:30 PM - 08:00 PM", title: "Harbor Family Dinner", detail: "The Boathouse • Reservation at 6:30", icon: Heart, border: "border-[#D4AF37]", text: "text-[#D4AF37]" }
+  { time: "07:30 AM", title: "School + work launch", detail: "Morning checklist and breakfast", icon: Users, border: "border-sky-400", text: "text-sky-300" },
+  { time: "04:30 PM", title: "Grocery run", detail: "Budget staples for weekly meals", icon: CalendarDays, border: "border-emerald-400", text: "text-emerald-300" },
+  { time: "06:30 PM", title: "Family dinner", detail: "Cheesy chicken rice bake", icon: Heart, border: "border-[#D4AF37]", text: "text-[#D4AF37]" }
 ];
 
 const statuses = [
-  { name: "William", status: "Available", icon: Check, tone: "emerald" },
-  { name: "Sarah", status: "In Meeting", icon: Clock, tone: "amber" },
-  { name: "Lily", status: "At School", icon: Music, tone: "sky" }
+  { name: "Manager", status: "Setup Ready", icon: Check, tone: "emerald" },
+  { name: "Planner", status: "Needs Invite", icon: Clock, tone: "amber" },
+  { name: "Kids", status: "View Later", icon: Users, tone: "sky" }
 ];
 
 export default function CalendarPage() {
@@ -54,20 +45,20 @@ export default function CalendarPage() {
           <div>
             <h1 className="harbor-serif text-5xl font-semibold text-[#D4AF37]">Family Calendar</h1>
             <div className="mt-3 flex items-center gap-4">
-              <button className="text-white/60 transition hover:text-[#D4AF37]" type="button"><ChevronLeft /></button>
+              <a className="text-white/60 transition hover:text-[#D4AF37]" href="/settings"><ChevronLeft /></a>
               <p className="harbor-serif text-2xl tracking-wide text-white">October 2024</p>
-              <button className="text-white/60 transition hover:text-[#D4AF37]" type="button"><ChevronRight /></button>
+              <a className="text-white/60 transition hover:text-[#D4AF37]" href="/settings"><ChevronRight /></a>
             </div>
           </div>
 
           <div className="flex flex-wrap items-center gap-4">
             <div className="harbor-glass flex rounded-xl p-1">
               <button className="rounded-lg bg-[#D4AF37]/20 px-4 py-2 text-xs font-bold uppercase tracking-widest text-[#D4AF37]" type="button">Month</button>
-              <button className="rounded-lg px-4 py-2 text-xs font-bold uppercase tracking-widest text-slate-400 transition hover:text-white" type="button">Week</button>
+              <a className="rounded-lg px-4 py-2 text-xs font-bold uppercase tracking-widest text-slate-400 transition hover:text-white" href="/settings">Week</a>
             </div>
-            <button className="flex items-center gap-2 rounded-xl bg-[#D4AF37] px-5 py-3 text-sm font-bold text-slate-950 shadow-lg shadow-[#D4AF37]/10 transition hover:bg-[#B5942B]" type="button">
+            <a className="flex items-center gap-2 rounded-xl bg-[#D4AF37] px-5 py-3 text-sm font-bold text-slate-950 shadow-lg shadow-[#D4AF37]/10 transition hover:bg-[#B5942B]" href="/settings">
               <Plus className="h-4 w-4" /> Add Event
-            </button>
+            </a>
           </div>
         </div>
       </header>
@@ -78,13 +69,13 @@ export default function CalendarPage() {
             <div className="grid grid-cols-7 border-b border-white/10 bg-white/5">
               {weekdays.map((day) => <div className="py-3 text-center text-[10px] font-bold uppercase tracking-[0.24em] text-[#D4AF37]/80" key={day}>{day}</div>)}
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7">
-              {days.map((day) => (
-                <div className={`min-h-[120px] border-b border-r border-white/5 p-3 ${day.muted ? "bg-black/20 opacity-30" : ""} ${day.today ? "border-2 border-[#D4AF37]/25 bg-[#D4AF37]/5" : ""}`} key={day.number}>
+            <div className="grid grid-cols-7">
+              {days.map((day, index) => (
+                <div className={`min-h-[104px] border-b border-r border-white/5 p-2 sm:min-h-[120px] sm:p-3 ${day.muted ? "bg-black/20 opacity-30" : ""} ${day.today ? "border-2 border-[#D4AF37]/25 bg-[#D4AF37]/5" : ""}`} key={`${day.number}-${index}`}>
                   <span className={`text-sm ${day.today ? "font-bold text-[#D4AF37]" : "text-slate-400"}`}>{day.number}</span>
                   <div className="mt-2 space-y-1">
                     {day.events?.map((event) => (
-                      <div className={`truncate rounded border px-2 py-1 text-[10px] ${toneClasses[event.tone as keyof typeof toneClasses]}`} key={event.label}>{event.label}</div>
+                      <div className={`truncate rounded border px-2 py-1 text-[10px] ${toneClasses[event.tone]}`} key={event.label}>{event.label}</div>
                     ))}
                   </div>
                 </div>
@@ -96,8 +87,8 @@ export default function CalendarPage() {
             {[
               ["Family Time", "bg-[#D4AF37]"],
               ["Kids Activities", "bg-sky-300"],
-              ["Work / Prof.", "bg-emerald-400"],
-              ["Personal Care", "bg-purple-400"]
+              ["Budget / Errands", "bg-emerald-400"],
+              ["Planning", "bg-purple-400"]
             ].map(([label, color]) => (
               <div className="flex items-center gap-2" key={label}>
                 <span className={`h-2 w-2 rounded-full ${color}`} />
