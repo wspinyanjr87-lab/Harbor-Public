@@ -42,7 +42,7 @@ export default function HarborHomePage() {
         className="relative min-h-[230px] overflow-hidden border-b border-[#D4AF37]/10 bg-cover bg-center lg:min-h-[260px]"
         style={{
           backgroundImage:
-            "linear-gradient(to bottom, rgba(2, 6, 23, 0.12), rgba(2, 6, 23, 0.94)), url('/banners/harbor-home-banner.png'), url('/banners/home-banner-1.png'), url('https://images.unsplash.com/photo-1482189349482-3defd547e0e9?q=80&w=2000&auto=format&fit=crop')"
+            "linear-gradient(to bottom, rgba(2, 6, 23, 0.12), rgba(2, 6, 23, 0.94)), url('/banners/home-banner-1.png'), url('https://images.unsplash.com/photo-1482189349482-3defd547e0e9?q=80&w=2000&auto=format&fit=crop')"
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-[#020617]/85 via-[#020617]/35 to-[#020617]/75" />
