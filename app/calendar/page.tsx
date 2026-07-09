@@ -1,4 +1,5 @@
 import HarborShell from "@/components/harbor/HarborShell";
+import HarborNextStep from "@/components/harbor/HarborNextStep";
 import { calendarEventsByDay } from "@/lib/harborStarterData";
 import { CalendarDays, Check, ChevronLeft, ChevronRight, Clock, Heart, Plus, Users } from "lucide-react";
 
@@ -71,80 +72,89 @@ export default function CalendarPage() {
         </div>
       </header>
 
-      <div className="grid gap-8 px-6 py-8 lg:grid-cols-[1fr_360px] lg:px-12">
-        <section>
-          <div className="harbor-glass overflow-hidden rounded-3xl border-white/5">
-            <div className="grid grid-cols-7 border-b border-white/10 bg-white/5">
-              {weekdays.map((day) => <div className="py-3 text-center text-[10px] font-bold uppercase tracking-[0.24em] text-[#D4AF37]/80" key={day}>{day}</div>)}
-            </div>
-            <div className="grid grid-cols-7">
-              {days.map((day, index) => (
-                <div className={`min-h-[104px] border-b border-r border-white/5 p-2 sm:min-h-[120px] sm:p-3 ${day.muted ? "bg-black/20 opacity-30" : ""} ${day.today ? "border-2 border-[#D4AF37]/25 bg-[#D4AF37]/5" : ""}`} key={`${day.number}-${index}`}>
-                  <span className={`text-sm ${day.today ? "font-bold text-[#D4AF37]" : "text-slate-400"}`}>{day.number}</span>
-                  <div className="mt-2 space-y-1">
-                    {day.events?.map((event) => (
-                      <div className={`truncate rounded border px-2 py-1 text-[10px] ${toneClasses[event.tone]}`} key={event.label}>{event.label}</div>
-                    ))}
+      <div className="space-y-8 px-6 py-8 lg:px-12">
+        <div className="grid gap-8 lg:grid-cols-[1fr_360px]">
+          <section>
+            <div className="harbor-glass overflow-hidden rounded-3xl border-white/5">
+              <div className="grid grid-cols-7 border-b border-white/10 bg-white/5">
+                {weekdays.map((day) => <div className="py-3 text-center text-[10px] font-bold uppercase tracking-[0.24em] text-[#D4AF37]/80" key={day}>{day}</div>)}
+              </div>
+              <div className="grid grid-cols-7">
+                {days.map((day, index) => (
+                  <div className={`min-h-[104px] border-b border-r border-white/5 p-2 sm:min-h-[120px] sm:p-3 ${day.muted ? "bg-black/20 opacity-30" : ""} ${day.today ? "border-2 border-[#D4AF37]/25 bg-[#D4AF37]/5" : ""}`} key={`${day.number}-${index}`}>
+                    <span className={`text-sm ${day.today ? "font-bold text-[#D4AF37]" : "text-slate-400"}`}>{day.number}</span>
+                    <div className="mt-2 space-y-1">
+                      {day.events?.map((event) => (
+                        <div className={`truncate rounded border px-2 py-1 text-[10px] ${toneClasses[event.tone]}`} key={event.label}>{event.label}</div>
+                      ))}
+                    </div>
                   </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-6">
+              {[
+                ["Family Time", "bg-[#D4AF37]"],
+                ["Kids Activities", "bg-sky-300"],
+                ["Budget / Errands", "bg-emerald-400"],
+                ["Planning", "bg-purple-400"]
+              ].map(([label, color]) => (
+                <div className="flex items-center gap-2" key={label}>
+                  <span className={`h-2 w-2 rounded-full ${color}`} />
+                  <span className="text-xs uppercase tracking-widest text-slate-400">{label}</span>
                 </div>
               ))}
             </div>
-          </div>
+          </section>
 
-          <div className="mt-8 flex flex-wrap gap-6">
-            {[
-              ["Family Time", "bg-[#D4AF37]"],
-              ["Kids Activities", "bg-sky-300"],
-              ["Budget / Errands", "bg-emerald-400"],
-              ["Planning", "bg-purple-400"]
-            ].map(([label, color]) => (
-              <div className="flex items-center gap-2" key={label}>
-                <span className={`h-2 w-2 rounded-full ${color}`} />
-                <span className="text-xs uppercase tracking-widest text-slate-400">{label}</span>
+          <aside className="space-y-8">
+            <section>
+              <h2 className="harbor-serif mb-5 text-3xl font-semibold text-[#D4AF37]">Today&apos;s Agenda</h2>
+              <div className="space-y-4">
+                {agenda.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <article className={`harbor-glass rounded-2xl border-l-4 ${item.border} p-5 transition hover:bg-white/5`} key={item.title}>
+                      <div className="mb-2 flex items-start justify-between gap-4">
+                        <p className={`text-[10px] font-bold uppercase tracking-widest ${item.text}`}>{item.time}</p>
+                        <Icon className="h-4 w-4 text-slate-500" />
+                      </div>
+                      <h3 className="text-lg font-semibold text-white">{item.title}</h3>
+                      <p className="text-sm text-slate-400">{item.detail}</p>
+                    </article>
+                  );
+                })}
               </div>
-            ))}
-          </div>
-        </section>
+            </section>
 
-        <aside className="space-y-8">
-          <section>
-            <h2 className="harbor-serif mb-5 text-3xl font-semibold text-[#D4AF37]">Today&apos;s Agenda</h2>
-            <div className="space-y-4">
-              {agenda.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <article className={`harbor-glass rounded-2xl border-l-4 ${item.border} p-5 transition hover:bg-white/5`} key={item.title}>
-                    <div className="mb-2 flex items-start justify-between gap-4">
-                      <p className={`text-[10px] font-bold uppercase tracking-widest ${item.text}`}>{item.time}</p>
-                      <Icon className="h-4 w-4 text-slate-500" />
+            <section>
+              <h2 className="harbor-serif mb-5 text-3xl font-semibold text-[#D4AF37]">Harbor Status</h2>
+              <div className="harbor-glass space-y-4 rounded-3xl p-6">
+                {statuses.map((person) => {
+                  const Icon = person.icon;
+                  const tone = person.tone === "emerald" ? "text-emerald-400 border-emerald-400/50 bg-emerald-400/15" : person.tone === "amber" ? "text-amber-400 border-amber-400/50 bg-amber-400/15" : "text-sky-400 border-sky-400/50 bg-sky-400/15";
+                  return (
+                    <div className="flex items-center justify-between gap-4" key={person.name}>
+                      <div className="flex items-center gap-3">
+                        <div className={`grid h-8 w-8 place-items-center rounded-full border ${tone}`}><Icon className="h-4 w-4" /></div>
+                        <span className="text-sm font-semibold text-slate-200">{person.name}</span>
+                      </div>
+                      <span className={`text-[10px] font-bold uppercase tracking-widest ${tone.split(" ")[0]}`}>{person.status}</span>
                     </div>
-                    <h3 className="text-lg font-semibold text-white">{item.title}</h3>
-                    <p className="text-sm text-slate-400">{item.detail}</p>
-                  </article>
-                );
-              })}
-            </div>
-          </section>
+                  );
+                })}
+              </div>
+            </section>
+          </aside>
+        </div>
 
-          <section>
-            <h2 className="harbor-serif mb-5 text-3xl font-semibold text-[#D4AF37]">Harbor Status</h2>
-            <div className="harbor-glass space-y-4 rounded-3xl p-6">
-              {statuses.map((person) => {
-                const Icon = person.icon;
-                const tone = person.tone === "emerald" ? "text-emerald-400 border-emerald-400/50 bg-emerald-400/15" : person.tone === "amber" ? "text-amber-400 border-amber-400/50 bg-amber-400/15" : "text-sky-400 border-sky-400/50 bg-sky-400/15";
-                return (
-                  <div className="flex items-center justify-between gap-4" key={person.name}>
-                    <div className="flex items-center gap-3">
-                      <div className={`grid h-8 w-8 place-items-center rounded-full border ${tone}`}><Icon className="h-4 w-4" /></div>
-                      <span className="text-sm font-semibold text-slate-200">{person.name}</span>
-                    </div>
-                    <span className={`text-[10px] font-bold uppercase tracking-widest ${tone.split(" ")[0]}`}>{person.status}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </section>
-        </aside>
+        <HarborNextStep
+          title="Save the moments that make the week yours."
+          text="After the household rhythm is visible on the calendar, the next step is opening Memories so the app feels warm, personal, and family-owned."
+          href="/memories"
+          action="Continue to Memories"
+        />
       </div>
     </HarborShell>
   );
