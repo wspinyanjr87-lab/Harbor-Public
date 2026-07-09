@@ -38,14 +38,9 @@ const snapshotCards = [
 export default function HarborHomePage() {
   return (
     <HarborShell active="home">
-      <div
-        className="relative min-h-[230px] overflow-hidden border-b border-[#D4AF37]/10 bg-cover bg-center lg:min-h-[260px]"
-        style={{
-          backgroundImage:
-            "linear-gradient(to bottom, rgba(2, 6, 23, 0.12), rgba(2, 6, 23, 0.94)), url('/banners/home-banner-1.png'), url('https://images.unsplash.com/photo-1482189349482-3defd547e0e9?q=80&w=2000&auto=format&fit=crop')"
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-[#020617]/85 via-[#020617]/35 to-[#020617]/75" />
+      <div className="relative min-h-[230px] overflow-hidden border-b border-[#D4AF37]/10 bg-[radial-gradient(circle_at_top_left,rgba(212,175,55,0.22),transparent_34%),linear-gradient(135deg,#020617_0%,#07111f_52%,#0f172a_100%)] lg:min-h-[260px]">
+        <div className="absolute right-[-8rem] top-[-8rem] h-72 w-72 rounded-full bg-[#D4AF37]/10 blur-3xl" />
+        <div className="absolute bottom-[-10rem] left-[-6rem] h-80 w-80 rounded-full bg-sky-500/10 blur-3xl" />
         <div className="relative flex h-full min-h-[230px] flex-col justify-end px-6 py-10 lg:min-h-[260px] lg:px-12">
           <p className="text-xs font-bold uppercase tracking-[0.35em] text-[#D4AF37]/80">Harbor Family HQ</p>
           <h1 className="harbor-serif mt-3 text-5xl font-semibold leading-none text-[#D4AF37] lg:text-6xl">Welcome to Harbor.</h1>
