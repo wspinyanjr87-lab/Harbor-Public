@@ -3,7 +3,8 @@ import HarborNextStep from "@/components/harbor/HarborNextStep";
 import { budgetStarterRecipes, featuredBudgetIngredients, weeklyBudgetMeals } from "@/lib/harborStarterData";
 import { CalendarCheck, ChefHat, Clock, DollarSign, Flame, ListChecks, Plus, Search, Users } from "lucide-react";
 
-const filters = ["All", "Budget", "Quick Fix", "One Pan", "Family Dinner"];
+const filters = ["All", "Breakfast", "Lunch", "Dinner", "Bakery", "Munchies"];
+const recipeGroups = ["Breakfast", "Lunch", "Dinner", "Bakery", "Munchies"] as const;
 
 export default function PlannerPage() {
   return (
@@ -14,13 +15,13 @@ export default function PlannerPage() {
         <div className="absolute inset-0 flex flex-col justify-end p-6 lg:p-10">
           <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#D4AF37]/80">Free / Standard Starter Shelf</p>
           <h1 className="harbor-serif mt-2 text-5xl font-semibold text-[#D4AF37]">Meal Planner</h1>
-          <p className="mt-2 max-w-3xl text-slate-300">Budget-friendly family meals first. Premium seafood and fancy meals can live in upgraded packs later.</p>
+          <p className="mt-2 max-w-3xl text-slate-300">Budget-friendly family meals first: breakfast, lunch, dinner, bakery, and late-night munchies.</p>
         </div>
       </header>
 
       <div className="mx-auto w-full max-w-7xl space-y-8 px-6 py-8 lg:px-10">
         <div className="grid gap-8 xl:grid-cols-[1fr_384px]">
-          <section className="space-y-8">
+          <section className="space-y-10">
             <div className="flex flex-col gap-4 rounded-3xl border border-white/5 bg-white/5 p-4 md:flex-row md:items-center md:justify-between">
               <div className="relative flex-1">
                 <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
@@ -28,35 +29,50 @@ export default function PlannerPage() {
               </div>
               <div className="flex flex-wrap gap-3">
                 {filters.map((filter, index) => (
-                  <a className={`rounded-xl px-4 py-2 text-xs font-bold uppercase tracking-widest ${index === 0 ? "bg-[#D4AF37] text-slate-950" : "bg-slate-800 text-slate-300 hover:bg-slate-700"}`} href="/planner" key={filter}>{filter}</a>
+                  <a className={`rounded-xl px-4 py-2 text-xs font-bold uppercase tracking-widest ${index === 0 ? "bg-[#D4AF37] text-slate-950" : "bg-slate-800 text-slate-300 hover:bg-slate-700"}`} href={`#${filter.toLowerCase()}`} key={filter}>{filter}</a>
                 ))}
               </div>
             </div>
 
-            <div className="grid gap-6 md:grid-cols-2">
-              {budgetStarterRecipes.map((recipe) => (
-                <article className={`harbor-glass group overflow-hidden rounded-3xl ${recipe.featured ? "border-[#D4AF37]/30" : ""}`} key={recipe.title}>
-                  <div className="relative h-44 overflow-hidden">
-                    <img alt={recipe.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-110" src={recipe.image} />
-                    <div className="absolute left-3 top-3 rounded-lg border border-[#D4AF37]/40 bg-slate-950/80 px-2 py-1 text-[10px] font-bold uppercase text-[#D4AF37]">{recipe.tag}</div>
-                    {recipe.featured ? <span className="absolute right-3 top-3 rounded-lg border border-emerald-400/40 bg-slate-950/80 px-2 py-1 text-[10px] font-bold uppercase text-emerald-300">Free Starter</span> : null}
-                  </div>
-                  <div className="p-5">
-                    <h2 className="harbor-serif text-2xl font-semibold text-white">{recipe.title}</h2>
-                    <div className="mt-3 flex flex-wrap gap-4 text-xs text-slate-400">
-                      <span className="flex items-center gap-1"><Users className="h-3.5 w-3.5" /> {recipe.people}</span>
-                      <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5" /> {recipe.time}</span>
-                      <span className="flex items-center gap-1"><Flame className="h-3.5 w-3.5" /> {recipe.level}</span>
-                      <span className="flex items-center gap-1 text-emerald-300"><DollarSign className="h-3.5 w-3.5" /> {recipe.cost}</span>
+            {recipeGroups.map((group) => {
+              const recipes = budgetStarterRecipes.filter((recipe) => recipe.category === group);
+              return (
+                <section className="space-y-5" id={group.toLowerCase()} key={group}>
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#D4AF37]/80">{group}</p>
+                      <h2 className="harbor-serif text-3xl font-semibold text-white">{recipes.length} budget-friendly ideas</h2>
                     </div>
-                    <div className="mt-5 flex items-center justify-between">
-                      <span className="text-xs text-[#D4AF37]">{recipe.ingredients}</span>
-                      <a className="grid h-9 w-9 place-items-center rounded-full bg-[#D4AF37]/10 text-[#D4AF37] transition hover:bg-[#D4AF37] hover:text-slate-950" href="/grocery"><Plus className="h-4 w-4" /></a>
-                    </div>
+                    <p className="text-xs text-slate-500">No onion. No mushrooms. Built for Free / Standard.</p>
                   </div>
-                </article>
-              ))}
-            </div>
+
+                  <div className="grid gap-6 md:grid-cols-2">
+                    {recipes.map((recipe) => (
+                      <article className={`harbor-glass group overflow-hidden rounded-3xl ${recipe.featured ? "border-[#D4AF37]/30" : ""}`} key={recipe.title}>
+                        <div className="relative h-44 overflow-hidden">
+                          <img alt={recipe.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-110" src={recipe.image} />
+                          <div className="absolute left-3 top-3 rounded-lg border border-[#D4AF37]/40 bg-slate-950/80 px-2 py-1 text-[10px] font-bold uppercase text-[#D4AF37]">{recipe.tag}</div>
+                          <span className={`absolute right-3 top-3 rounded-lg border bg-slate-950/80 px-2 py-1 text-[10px] font-bold uppercase ${recipe.edition === "Free" ? "border-emerald-400/40 text-emerald-300" : "border-sky-400/40 text-sky-300"}`}>{recipe.edition}</span>
+                        </div>
+                        <div className="p-5">
+                          <h3 className="harbor-serif text-2xl font-semibold text-white">{recipe.title}</h3>
+                          <div className="mt-3 flex flex-wrap gap-4 text-xs text-slate-400">
+                            <span className="flex items-center gap-1"><Users className="h-3.5 w-3.5" /> {recipe.people}</span>
+                            <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5" /> {recipe.time}</span>
+                            <span className="flex items-center gap-1"><Flame className="h-3.5 w-3.5" /> {recipe.level}</span>
+                            <span className="flex items-center gap-1 text-emerald-300"><DollarSign className="h-3.5 w-3.5" /> {recipe.cost}</span>
+                          </div>
+                          <div className="mt-5 flex items-center justify-between">
+                            <span className="text-xs text-[#D4AF37]">{recipe.ingredients}</span>
+                            <a aria-label={`Add ${recipe.title} to grocery list`} className="grid h-9 w-9 place-items-center rounded-full bg-[#D4AF37]/10 text-[#D4AF37] transition hover:bg-[#D4AF37] hover:text-slate-950" href="/grocery"><Plus className="h-4 w-4" /></a>
+                          </div>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                </section>
+              );
+            })}
           </section>
 
           <aside className="space-y-8">
