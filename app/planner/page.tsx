@@ -6,7 +6,7 @@ import HarborNextStep from "@/components/harbor/HarborNextStep";
 import HarborCustomRecipes from "@/components/harbor/HarborCustomRecipes";
 import { budgetStarterRecipes, featuredBudgetIngredients, weeklyBudgetMeals } from "@/lib/harborStarterData";
 import { getRecipeSlug } from "@/lib/recipeDetails";
-import { CalendarCheck, ChefHat, Clock, Crown, DollarSign, Flame, ListChecks, Plus, Search, Sparkles, Users } from "lucide-react";
+import { CalendarCheck, ChefHat, Clock, Crown, DollarSign, Flame, Link2, ListChecks, Plus, Search, Sparkles, Users, WandSparkles } from "lucide-react";
 
 const filters = ["All", "Breakfast", "Lunch", "Dinner", "Bakery", "Munchies"] as const;
 const recipeGroups = ["Breakfast", "Lunch", "Dinner", "Bakery", "Munchies"] as const;
@@ -18,19 +18,43 @@ const mealPlans = [
     name: "Free",
     tone: "emerald",
     meals: ["Dinner", "Late-night snack"],
-    extras: ["Smaller Harbor recipe shelf", "Unlimited personal recipes", "Starter grocery list", "Manual meal selection"],
+    extras: ["Smaller Harbor recipe shelf", "Unlimited manually added recipes", "Starter grocery list", "Manual meal selection"],
   },
   {
     name: "Standard",
     tone: "sky",
     meals: ["Lunch", "Dinner", "Late-night snack"],
-    extras: ["Larger Harbor recipe shelf", "Unlimited personal recipes", "More weekly meal options", "Expanded grocery support"],
+    extras: ["Larger Harbor recipe shelf", "Unlimited personal recipes", "Import recipes from a URL", "More weekly meal options", "Expanded grocery support"],
   },
   {
     name: "Premium",
     tone: "gold",
     meals: ["Breakfast", "Lunch", "Dinner", "Late-night snack"],
-    extras: ["Full Harbor recipe shelf", "Unlimited personal recipes", "Smarter grocery model", "Live updates", "Early and prerelease feature access"],
+    extras: ["Full Harbor recipe shelf", "Unlimited personal recipes", "Import recipes from a URL", "AI recipe generation", "Smarter grocery model", "Live updates", "Early and prerelease feature access"],
+  },
+] as const;
+
+const recipeTools = [
+  {
+    plan: "Free",
+    title: "Manual Recipe Builder",
+    text: "Type in any household recipe with ingredients and cooking steps. Personal recipes always remain available on every plan.",
+    icon: Plus,
+    tone: "border-emerald-400/25 bg-emerald-400/5 text-emerald-300",
+  },
+  {
+    plan: "Standard",
+    title: "Import from URL",
+    text: "Paste a recipe link and Harbor can pull supported titles, ingredients, instructions, timing, images, and the original source link.",
+    icon: Link2,
+    tone: "border-sky-400/25 bg-sky-400/5 text-sky-300",
+  },
+  {
+    plan: "Premium",
+    title: "Create with AI",
+    text: "Generate recipes from budget, servings, ingredients on hand, meal type, allergies, dislikes, and household diet preferences.",
+    icon: WandSparkles,
+    tone: "border-[#D4AF37]/35 bg-[#D4AF37]/10 text-[#D4AF37]",
   },
 ] as const;
 
@@ -85,6 +109,20 @@ export default function PlannerPage() {
                 <ul className="mt-5 space-y-2 text-sm text-slate-300">
                   {plan.extras.map((extra) => <li key={extra}>• {extra}</li>)}
                 </ul>
+              </article>
+            );
+          })}
+        </section>
+
+        <section className="grid gap-5 lg:grid-cols-3">
+          {recipeTools.map((tool) => {
+            const Icon = tool.icon;
+            return (
+              <article className={`rounded-[2rem] border p-6 ${tool.tone}`} key={tool.plan}>
+                <Icon className="h-7 w-7" />
+                <p className="mt-5 text-xs font-bold uppercase tracking-[0.28em]">{tool.plan} recipe tool</p>
+                <h2 className="harbor-serif mt-2 text-3xl font-semibold text-white">{tool.title}</h2>
+                <p className="mt-3 text-sm leading-6 text-slate-300">{tool.text}</p>
               </article>
             );
           })}
@@ -209,12 +247,12 @@ export default function PlannerPage() {
 
             <section className="rounded-3xl border border-[#D4AF37]/10 bg-gradient-to-br from-[#D4AF37]/5 to-[#D4AF37]/15 p-6">
               <div className="mb-3 flex items-center gap-3"><ChefHat className="h-7 w-7 text-[#D4AF37]" /><h3 className="text-sm font-bold uppercase tracking-widest text-[#D4AF37]">Planner Rule</h3></div>
-              <p className="harbor-serif text-lg italic leading-7 text-slate-300">&quot;Upgrades unlock more Harbor ideas and smarter tools. Your own recipes always belong to you.&quot;</p>
+              <p className="harbor-serif text-lg italic leading-7 text-slate-300">&quot;Upgrades unlock faster recipe creation and smarter tools. Your own recipes always belong to you.&quot;</p>
             </section>
           </aside>
         </div>
 
-        <HarborNextStep title="Turn meals into groceries." text="Choose a Harbor recipe or save a personal favorite, then carry the plan into the grocery list." href="/grocery" action="Continue to Grocery List" />
+        <HarborNextStep title="Turn meals into groceries." text="Choose a recipe, review its steps, and add its grocery notes to the family list." href="/grocery" action="Continue to Grocery List" />
       </div>
     </HarborShell>
   );
