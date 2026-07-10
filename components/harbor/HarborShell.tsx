@@ -6,16 +6,17 @@ type HarborSection = "home" | "calendar" | "planner" | "grocery" | "memories";
 type NavItem = {
   key: HarborSection;
   label: string;
+  shortLabel: string;
   href: string;
   icon: typeof Home;
 };
 
 const navItems: NavItem[] = [
-  { key: "home", label: "Harbor Home", href: "/", icon: Home },
-  { key: "calendar", label: "Calendar", href: "/calendar", icon: CalendarDays },
-  { key: "planner", label: "Recipe Planner", href: "/planner", icon: Utensils },
-  { key: "grocery", label: "Grocery List", href: "/grocery", icon: ShoppingCart },
-  { key: "memories", label: "Memories", href: "/memories", icon: Camera }
+  { key: "home", label: "Harbor Home", shortLabel: "Home", href: "/", icon: Home },
+  { key: "calendar", label: "Calendar", shortLabel: "Calendar", href: "/calendar", icon: CalendarDays },
+  { key: "planner", label: "Recipe Planner", shortLabel: "Meals", href: "/planner", icon: Utensils },
+  { key: "grocery", label: "Grocery List", shortLabel: "Grocery", href: "/grocery", icon: ShoppingCart },
+  { key: "memories", label: "Memories", shortLabel: "Memories", href: "/memories", icon: Camera }
 ];
 
 function HarborMark() {
@@ -79,7 +80,7 @@ export default function HarborShell({ active, children }: { active: HarborSectio
               </div>
               <div>
                 <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">Account</p>
-                <p className="text-sm font-bold text-slate-200">William Harbor</p>
+                <p className="text-sm font-bold text-slate-200">Harbor Household</p>
               </div>
             </div>
 
@@ -91,15 +92,18 @@ export default function HarborShell({ active, children }: { active: HarborSectio
           </div>
         </aside>
 
-        <section className="min-w-0 flex-1 lg:ml-72">
+        <section className="min-w-0 flex-1 pb-20 lg:ml-72 lg:pb-0">
           <header className="sticky top-0 z-30 flex items-center justify-between border-b border-white/5 bg-[#020617]/85 px-5 py-4 backdrop-blur-xl lg:hidden">
-            <div className="flex items-center gap-3">
+            <a className="flex items-center gap-3" href="/">
               <HarborMark />
               <div>
                 <p className="harbor-serif text-xl font-semibold tracking-[0.22em] text-[#D4AF37]">HARBOR</p>
                 <p className="text-[10px] uppercase tracking-[0.25em] text-[#D4AF37]/70">Family HQ</p>
               </div>
-            </div>
+            </a>
+            <a aria-label="Open Setup Center" className="grid h-11 w-11 place-items-center rounded-xl border border-white/10 bg-white/[0.04] text-slate-300 transition hover:border-[#D4AF37]/30 hover:text-[#D4AF37]" href="/settings">
+              <Settings className="h-5 w-5" />
+            </a>
           </header>
 
           {children}
@@ -110,6 +114,23 @@ export default function HarborShell({ active, children }: { active: HarborSectio
           </footer>
         </section>
       </div>
+
+      <nav className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-5 border-t border-white/10 bg-[#010411]/95 px-1 py-2 backdrop-blur-xl lg:hidden" aria-label="Harbor mobile navigation">
+        {navItems.map((item) => {
+          const Icon = item.icon;
+          const isActive = active === item.key;
+          return (
+            <a
+              className={`flex min-w-0 flex-col items-center gap-1 rounded-xl px-1 py-2 text-[9px] font-bold uppercase tracking-wide transition ${isActive ? "bg-[#D4AF37]/12 text-[#D4AF37]" : "text-slate-500 hover:text-slate-200"}`}
+              href={item.href}
+              key={item.key}
+            >
+              <Icon className="h-5 w-5" />
+              <span className="truncate">{item.shortLabel}</span>
+            </a>
+          );
+        })}
+      </nav>
     </main>
   );
 }
