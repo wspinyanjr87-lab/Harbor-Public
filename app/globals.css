@@ -68,3 +68,23 @@ body {
   box-shadow: 0 18px 40px rgba(16, 24, 40, 0.08);
   backdrop-filter: blur(10px);
 }
+
+img[alt="Egg & Cheese Breakfast Burritos"] {
+  content: url("https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Breakfast_burrito_%28cropped%29.jpg/900px-Breakfast_burrito_%28cropped%29.jpg");
+}
+
+img[alt="Peanut Butter Banana Oatmeal"] {
+  content: url("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Oatmeal_porridge_1-minute_with_additional_ingredients.jpg/900px-Oatmeal_porridge_1-minute_with_additional_ingredients.jpg");
+}
+
+img[alt="Cheesy Hash Brown Egg Bake"] {
+  content: url("https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Breakfast_strata.jpg/900px-Breakfast_strata.jpg");
+}
+
+img[alt="Pancake Sheet Pan Squares"] {
+  content: url("https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Foodiesfeed.com_pouring-honey-on-pancakes-with-walnuts.jpg/900px-Foodiesfeed.com_pouring-honey-on-pancakes-with-walnuts.jpg");
+}
+
+img[alt="Sausage Egg Rice Bowls"] {
+  content: url("https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=1200&auto=format&fit=crop");
+}
