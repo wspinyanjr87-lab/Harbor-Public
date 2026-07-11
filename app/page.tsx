@@ -2,7 +2,7 @@
 
 import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Anchor, ArrowRight, CheckCircle2, Eye, EyeOff, Lighthouse, Loader2, ShieldCheck, Sparkles } from "lucide-react";
+import { Anchor, ArrowRight, CheckCircle2, Eye, EyeOff, Loader2, ShieldCheck, Sparkles } from "lucide-react";
 import { supabase } from "@/lib/supabase/client";
 
 type AuthMode = "signin" | "signup";
@@ -127,7 +127,7 @@ export default function HarborWelcomePage() {
         <section className="hidden rounded-[2.5rem] border border-white/10 bg-white/[0.035] p-10 shadow-2xl shadow-black/30 backdrop-blur-xl lg:block">
           <div className="flex items-center gap-3 text-[#D4AF37]">
             <div className="grid h-12 w-12 place-items-center rounded-2xl border border-[#D4AF37]/30 bg-[#D4AF37]/10">
-              <Lighthouse className="h-6 w-6" />
+              <Anchor className="h-6 w-6" />
             </div>
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#D4AF37]/75">Harbor Family Planner</p>
@@ -166,7 +166,7 @@ export default function HarborWelcomePage() {
         <section className="mx-auto w-full max-w-xl">
           <div className="mb-8 flex items-center gap-3 lg:hidden">
             <div className="grid h-11 w-11 place-items-center rounded-2xl border border-[#D4AF37]/30 bg-[#D4AF37]/10 text-[#D4AF37]">
-              <Lighthouse className="h-5 w-5" />
+              <Anchor className="h-5 w-5" />
             </div>
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#D4AF37]/75">Harbor</p>
