@@ -1,0 +1,158 @@
+[
+  {
+    "title": "Harbor Chili",
+    "slug": "harbor-chili",
+    "category": "Dinner",
+    "description": "A hearty, budget-friendly beef and bean chili built for busy family nights.",
+    "servings": 6,
+    "prepMinutes": 15,
+    "cookMinutes": 40,
+    "difficulty": "Easy",
+    "budgetLevel": "$",
+    "ingredients": [
+      { "name": "ground beef", "quantity": 1, "unit": "lb", "groceryCategory": "Meat & Protein" },
+      { "name": "yellow onion", "quantity": 1, "unit": "whole", "groceryCategory": "Produce" },
+      { "name": "kidney beans", "quantity": 2, "unit": "15 oz cans", "groceryCategory": "Pantry" },
+      { "name": "diced tomatoes", "quantity": 2, "unit": "14.5 oz cans", "groceryCategory": "Pantry" },
+      { "name": "tomato sauce", "quantity": 1, "unit": "15 oz can", "groceryCategory": "Pantry" },
+      { "name": "chili powder", "quantity": 2, "unit": "tbsp", "groceryCategory": "Pantry" },
+      { "name": "ground cumin", "quantity": 1, "unit": "tsp", "groceryCategory": "Pantry" },
+      { "name": "shredded cheddar", "quantity": 1, "unit": "cup", "groceryCategory": "Dairy", "optional": true }
+    ],
+    "steps": [
+      "Dice the onion and drain and rinse the kidney beans.",
+      "Brown the ground beef and onion in a large pot over medium heat, then drain excess grease.",
+      "Stir in the beans, diced tomatoes, tomato sauce, chili powder, and cumin.",
+      "Bring to a gentle boil, reduce the heat, and simmer uncovered for 25 to 30 minutes.",
+      "Taste and adjust seasoning, then serve with shredded cheddar if desired."
+    ],
+    "tags": ["Budget", "Family Favorite", "One Pot", "Freezer Friendly"],
+    "imageUrl": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=1200&auto=format&fit=crop",
+    "isPublished": true,
+    "sortOrder": 1
+  },
+  {
+    "title": "Cheesy Breakfast Quesadillas",
+    "slug": "cheesy-breakfast-quesadillas",
+    "category": "Breakfast",
+    "description": "Crisp tortillas filled with fluffy eggs, cheese, and optional breakfast sausage.",
+    "servings": 4,
+    "prepMinutes": 10,
+    "cookMinutes": 15,
+    "difficulty": "Easy",
+    "budgetLevel": "$",
+    "ingredients": [
+      { "name": "large eggs", "quantity": 6, "unit": "whole", "groceryCategory": "Dairy" },
+      { "name": "flour tortillas", "quantity": 4, "unit": "large", "groceryCategory": "Bakery" },
+      { "name": "shredded cheddar", "quantity": 1.5, "unit": "cups", "groceryCategory": "Dairy" },
+      { "name": "breakfast sausage", "quantity": 0.5, "unit": "lb", "groceryCategory": "Meat & Protein", "optional": true },
+      { "name": "butter", "quantity": 1, "unit": "tbsp", "groceryCategory": "Dairy" },
+      { "name": "salsa", "quantity": 0.5, "unit": "cup", "groceryCategory": "Pantry", "optional": true }
+    ],
+    "steps": [
+      "Cook and crumble the sausage in a skillet if using, then transfer it to a plate.",
+      "Whisk the eggs and scramble them gently in the same skillet with half the butter.",
+      "Lay out the tortillas and divide the eggs, sausage, and cheese over one half of each tortilla.",
+      "Fold each tortilla closed and cook with the remaining butter until golden on both sides.",
+      "Slice into wedges and serve warm with salsa."
+    ],
+    "tags": ["Protein", "School Morning", "Kid Friendly", "Quick"],
+    "imageUrl": "https://images.unsplash.com/photo-1565299507177-b0ac66763828?q=80&w=1200&auto=format&fit=crop",
+    "isPublished": true,
+    "sortOrder": 2
+  },
+  {
+    "title": "Chicken Ranch Wraps",
+    "slug": "chicken-ranch-wraps",
+    "category": "Lunch",
+    "description": "Fast chicken wraps with crisp lettuce, cheddar, and creamy ranch for an easy lunch.",
+    "servings": 4,
+    "prepMinutes": 15,
+    "cookMinutes": 0,
+    "difficulty": "Easy",
+    "budgetLevel": "$",
+    "ingredients": [
+      { "name": "cooked chicken", "quantity": 2, "unit": "cups", "groceryCategory": "Meat & Protein" },
+      { "name": "flour tortillas", "quantity": 4, "unit": "large", "groceryCategory": "Bakery" },
+      { "name": "romaine lettuce", "quantity": 2, "unit": "cups", "groceryCategory": "Produce" },
+      { "name": "shredded cheddar", "quantity": 1, "unit": "cup", "groceryCategory": "Dairy" },
+      { "name": "ranch dressing", "quantity": 0.5, "unit": "cup", "groceryCategory": "Dairy" },
+      { "name": "tomato", "quantity": 1, "unit": "whole", "groceryCategory": "Produce", "optional": true }
+    ],
+    "steps": [
+      "Chop the cooked chicken, lettuce, and tomato into bite-size pieces.",
+      "Warm the tortillas briefly so they fold without tearing.",
+      "Divide the chicken, lettuce, tomato, and cheddar between the tortillas.",
+      "Drizzle each wrap with ranch dressing.",
+      "Fold in the sides, roll tightly, and cut in half before serving."
+    ],
+    "tags": ["Quick", "Lunchbox", "Leftover Chicken", "Kid Friendly"],
+    "imageUrl": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?q=80&w=1200&auto=format&fit=crop",
+    "isPublished": true,
+    "sortOrder": 3
+  },
+  {
+    "title": "Fudgy Budget Brownies",
+    "slug": "fudgy-budget-brownies",
+    "category": "Bakery",
+    "description": "Simple cocoa brownies with chewy edges and a rich chocolate center.",
+    "servings": 12,
+    "prepMinutes": 12,
+    "cookMinutes": 28,
+    "difficulty": "Easy",
+    "budgetLevel": "$",
+    "ingredients": [
+      { "name": "butter", "quantity": 0.5, "unit": "cup", "groceryCategory": "Dairy" },
+      { "name": "granulated sugar", "quantity": 1, "unit": "cup", "groceryCategory": "Pantry" },
+      { "name": "large eggs", "quantity": 2, "unit": "whole", "groceryCategory": "Dairy" },
+      { "name": "vanilla extract", "quantity": 1, "unit": "tsp", "groceryCategory": "Pantry" },
+      { "name": "all-purpose flour", "quantity": 0.75, "unit": "cup", "groceryCategory": "Pantry" },
+      { "name": "unsweetened cocoa powder", "quantity": 0.5, "unit": "cup", "groceryCategory": "Pantry" },
+      { "name": "salt", "quantity": 0.25, "unit": "tsp", "groceryCategory": "Pantry" },
+      { "name": "chocolate chips", "quantity": 0.5, "unit": "cup", "groceryCategory": "Snacks", "optional": true }
+    ],
+    "steps": [
+      "Heat the oven to 350°F and grease an 8-inch square baking pan.",
+      "Melt the butter and stir in the sugar until glossy.",
+      "Whisk in the eggs and vanilla.",
+      "Fold in the flour, cocoa powder, and salt just until no dry streaks remain.",
+      "Fold in chocolate chips if using, spread the batter in the pan, and bake for 24 to 28 minutes.",
+      "Cool before slicing so the center can set."
+    ],
+    "tags": ["Chocolate", "From Scratch", "Budget Baking", "Dessert"],
+    "imageUrl": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=1200&auto=format&fit=crop",
+    "isPublished": true,
+    "sortOrder": 4
+  },
+  {
+    "title": "Cinnamon Sugar Dessert Nachos",
+    "slug": "cinnamon-sugar-dessert-nachos",
+    "category": "Munchies",
+    "description": "Crispy cinnamon tortilla chips with chocolate drizzle for a fast late-night sweet snack.",
+    "servings": 4,
+    "prepMinutes": 10,
+    "cookMinutes": 10,
+    "difficulty": "Easy",
+    "budgetLevel": "$",
+    "ingredients": [
+      { "name": "flour tortillas", "quantity": 4, "unit": "medium", "groceryCategory": "Bakery" },
+      { "name": "butter", "quantity": 2, "unit": "tbsp", "groceryCategory": "Dairy" },
+      { "name": "granulated sugar", "quantity": 3, "unit": "tbsp", "groceryCategory": "Pantry" },
+      { "name": "ground cinnamon", "quantity": 1, "unit": "tsp", "groceryCategory": "Pantry" },
+      { "name": "chocolate chips", "quantity": 0.5, "unit": "cup", "groceryCategory": "Snacks" },
+      { "name": "whipped cream", "quantity": null, "unit": null, "groceryCategory": "Dairy", "optional": true }
+    ],
+    "steps": [
+      "Heat the oven to 375°F and line a baking sheet.",
+      "Cut each tortilla into wedges and brush both sides lightly with melted butter.",
+      "Mix the sugar and cinnamon, then sprinkle it evenly over the tortilla wedges.",
+      "Bake for 8 to 10 minutes until crisp and lightly golden.",
+      "Melt the chocolate chips in short microwave bursts and drizzle over the warm chips.",
+      "Serve immediately with whipped cream if desired."
+    ],
+    "tags": ["Late Night", "Sweet", "Quick", "Budget"],
+    "imageUrl": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=1200&auto=format&fit=crop",
+    "isPublished": true,
+    "sortOrder": 5
+  }
+]
