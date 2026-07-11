@@ -1,5 +1,8 @@
 import { createClient } from "@supabase/supabase-js";
+import dotenv from "dotenv";
 import recipes from "../../data/recipes/starter-recipes.json" with { type: "json" };
+
+dotenv.config({ path: ".env.local" });
 
 const recipeCategories = new Set(["Breakfast", "Lunch", "Dinner", "Bakery", "Munchies"]);
 const groceryCategories = new Set(["Produce", "Meat & Protein", "Dairy", "Pantry", "Frozen", "Bakery", "Snacks", "Other"]);
