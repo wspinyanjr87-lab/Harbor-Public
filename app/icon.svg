@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Harbor Family Planner">
+  <defs>
+    <linearGradient id="bg" x1="8" y1="4" x2="56" y2="62" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#164B5B"/>
+      <stop offset="1" stop-color="#092A36"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="25" y1="21" x2="39" y2="49" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFD778"/>
+      <stop offset="1" stop-color="#E9AA3D"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+  <circle cx="48" cy="15" r="7" fill="#FFD782"/>
+  <path d="M7 35 32 14l25 21" fill="none" stroke="#FFF4DA" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M13 34v17c0 4 3 7 7 7h24c4 0 7-3 7-7V34" fill="#FFF4DA"/>
+  <g fill="none" stroke="url(#gold)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="32" cy="33" r="4"/>
+    <path d="M32 37v14M25 42h14"/>
+    <path d="M22 47c2 7 5 10 10 10s8-3 10-10"/>
+  </g>
+  <path d="M0 53c8-4 15-4 23 0 7 3 12 3 19 0 8-4 14-4 22-1v12H0Z" fill="#2E9C9A" fill-opacity=".82"/>
+</svg>

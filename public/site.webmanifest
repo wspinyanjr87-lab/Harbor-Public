@@ -1,0 +1,25 @@
+{
+  "name": "Harbor Family Planner",
+  "short_name": "Harbor",
+  "description": "A family planner for meals, groceries, schedules, and household rhythm.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FFF5DD",
+  "theme_color": "#123F4E",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/harbor-app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
