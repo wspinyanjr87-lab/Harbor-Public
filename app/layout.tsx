@@ -14,12 +14,12 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     title: "Reception",
-    statusBarStyle: "default",
+    statusBarStyle: "black-translucent",
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#102F30",
+  themeColor: "#5A1F2D",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
