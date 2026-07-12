@@ -27,7 +27,7 @@
       "Taste and adjust seasoning, then serve with shredded cheddar if desired."
     ],
     "tags": ["Budget", "Family Favorite", "One Pot", "Freezer Friendly"],
-    "imageUrl": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=1200&auto=format&fit=crop",
+    "imageUrl": "/recipes/harbor-chili.png",
     "isPublished": true,
     "sortOrder": 1
   },
@@ -57,7 +57,7 @@
       "Slice into wedges and serve warm with salsa."
     ],
     "tags": ["Protein", "School Morning", "Kid Friendly", "Quick"],
-    "imageUrl": "https://images.unsplash.com/photo-1565299507177-b0ac66763828?q=80&w=1200&auto=format&fit=crop",
+    "imageUrl": "/recipes/cheesy-breakfast-quesadillas.png",
     "isPublished": true,
     "sortOrder": 2
   },
@@ -87,7 +87,7 @@
       "Fold in the sides, roll tightly, and cut in half before serving."
     ],
     "tags": ["Quick", "Lunchbox", "Leftover Chicken", "Kid Friendly"],
-    "imageUrl": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?q=80&w=1200&auto=format&fit=crop",
+    "imageUrl": "/recipes/chicken-ranch-wraps.png",
     "isPublished": true,
     "sortOrder": 3
   },
@@ -120,7 +120,7 @@
       "Cool before slicing so the center can set."
     ],
     "tags": ["Chocolate", "From Scratch", "Budget Baking", "Dessert"],
-    "imageUrl": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=1200&auto=format&fit=crop",
+    "imageUrl": "/recipes/fudgy-budget-brownies.png",
     "isPublished": true,
     "sortOrder": 4
   },
@@ -151,7 +151,7 @@
       "Serve immediately with whipped cream if desired."
     ],
     "tags": ["Late Night", "Sweet", "Quick", "Budget"],
-    "imageUrl": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=1200&auto=format&fit=crop",
+    "imageUrl": "/recipes/cinnamon-sugar-dessert-nachos.png",
     "isPublished": true,
     "sortOrder": 5
   }
