@@ -1,0 +1,31 @@
+{
+  "name": "Harbor Reception Desk",
+  "short_name": "Reception",
+  "description": "AI-powered restaurant reception and reservation operations.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F4F0E8",
+  "theme_color": "#102F30",
+  "icons": [
+    {
+      "src": "/icons/reception-app-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/reception-app-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/reception-app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
