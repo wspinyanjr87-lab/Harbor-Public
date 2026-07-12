@@ -1,1 +1,11 @@
-placeholder
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Harbor Reception Desk">
+  <defs>
+    <linearGradient id="b" x1="8" y1="4" x2="56" y2="61"><stop stop-color="#21494A"/><stop offset="1" stop-color="#102F30"/></linearGradient>
+    <linearGradient id="g" x1="18" y1="16" x2="45" y2="51"><stop stop-color="#F2D49B"/><stop offset="1" stop-color="#C78A43"/></linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#b)"/>
+  <path d="M17 43h30" stroke="#FFF8E9" stroke-width="6" stroke-linecap="round"/>
+  <path d="M21 40c2-14 7-22 11-22s9 8 11 22H21Z" fill="url(#g)"/>
+  <circle cx="32" cy="15" r="4" fill="#E7B96F"/>
+  <g fill="none" stroke="#FFF8E9" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="30" r="3"/><path d="M32 33v9M27 36h10"/><path d="M25 39c1 5 4 7 7 7s6-2 7-7"/></g>
+</svg>

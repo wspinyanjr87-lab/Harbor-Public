@@ -1,1 +1,44 @@
-placeholder
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Harbor Reception Desk</title>
+  <desc id="desc">A gold reception bell with an anchor emblem on a deep harbor green background.</desc>
+  <defs>
+    <linearGradient id="bg" x1="70" y1="36" x2="442" y2="478" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#21494A"/>
+      <stop offset="1" stop-color="#102F30"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="160" y1="138" x2="354" y2="392" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F2D49B"/>
+      <stop offset=".46" stop-color="#D9A45E"/>
+      <stop offset="1" stop-color="#B97834"/>
+    </linearGradient>
+    <linearGradient id="cream" x1="150" y1="302" x2="356" y2="430" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF9EC"/>
+      <stop offset="1" stop-color="#EEDFC6"/>
+    </linearGradient>
+    <filter id="shadow" x="-25%" y="-25%" width="150%" height="170%">
+      <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#071E1F" flood-opacity=".42"/>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <circle cx="401" cy="111" r="54" fill="#D9A45E" opacity=".14"/>
+  <circle cx="401" cy="111" r="31" fill="#F2D49B" opacity=".18"/>
+  <path d="M52 413c64-25 117-24 174 2 61 27 116 27 176 0 39-18 72-23 110-13v110H0V431c18-4 35-10 52-18Z" fill="#2E6665" opacity=".9"/>
+  <path d="M0 445c63-23 118-21 177 5 61 27 115 27 174 0 59-26 106-24 161-4" fill="none" stroke="#9FD1C6" stroke-width="15" stroke-linecap="round" opacity=".5"/>
+  <g filter="url(#shadow)">
+    <path d="M138 349h236c13 0 24 11 24 24s-11 24-24 24H138c-13 0-24-11-24-24s11-24 24-24Z" fill="url(#cream)"/>
+    <path d="M174 332c8-85 40-129 82-129s74 44 82 129H174Z" fill="url(#gold)"/>
+    <path d="M166 332h180" stroke="#FFF2D5" stroke-width="15" stroke-linecap="round" opacity=".85"/>
+    <circle cx="256" cy="177" r="29" fill="url(#gold)"/>
+    <circle cx="256" cy="177" r="12" fill="#FFF4DA" opacity=".75"/>
+  </g>
+  <g fill="none" stroke="#FFF8E9" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="256" cy="263" r="21"/>
+    <path d="M256 284v57"/>
+    <path d="M222 305h68"/>
+    <path d="M208 326c10 35 26 52 48 52s38-17 48-52"/>
+    <path d="m208 326-2 30 27-12"/>
+    <path d="m304 326 2 30-27-12"/>
+  </g>
+  <path d="M164 120c18-19 38-30 60-35" fill="none" stroke="#F2D49B" stroke-width="13" stroke-linecap="round" opacity=".78"/>
+  <path d="M347 102c16 8 30 19 42 34" fill="none" stroke="#F2D49B" stroke-width="13" stroke-linecap="round" opacity=".5"/>
+</svg>
