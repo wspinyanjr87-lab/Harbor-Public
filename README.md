@@ -1,17 +1,39 @@
-# Harbor Public
+# Harbor Reception Desk
 
-Public release repo for Harbor.
+Restaurant-focused AI reception and reservation operations for independent restaurants.
 
-Harbor is the public release layer for approved Grace products.
+## Phase 1 foundation
 
-## Rule
+This branch contains the first working product shell:
 
-Only public-safe product work belongs here.
+- Responsive restaurant operations dashboard
+- AI host online and paused state
+- Reservation board
+- Manual reservation creation
+- Calls, guest, lead, and activity metrics
+- Recent reception activity feed
+- Mobile and desktop layouts
 
-## First product candidate
+## Run locally
 
-Harbor Family Planner Lite.
+```bash
+npm install
+npm run dev
+```
 
-## Current status
+Open `http://localhost:3000`.
 
-Initialized. Product code migration has not started yet.
+## Branch
+
+`harbor-reception-desk-phase-1`
+
+## Next build targets
+
+1. Supabase restaurant, menu, reservation, and customer tables
+2. Restaurant onboarding and profile editor
+3. Menu knowledge manager
+4. Website chat endpoint and embeddable widget
+5. Twilio and OpenAI voice integration
+6. Authentication and multi-restaurant tenancy
+
+Only public-safe product work belongs in this repository.
