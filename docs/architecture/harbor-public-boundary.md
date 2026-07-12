@@ -1,6 +1,6 @@
 # Harbor Public Boundary
 
-Status: **Harbor-Public architecture doctrine**
+Status: **Harbor-HQ architecture doctrine**
 
 Source cleaned from the legacy Grace doc `docs/migration/harbor-agent-public-integration.md`. This version keeps the Harbor boundary model and removes old staging language.
 
@@ -12,7 +12,7 @@ Grace stays private. Harbor receives only the approved, public-safe parts that a
 
 ```text
 Grace-HQ = private command brain, source system, Builder, agents, memory, and admin tools
-Harbor-Public = public release boundary, product packaging layer, and deployment target
+Harbor-HQ = public release boundary, product packaging layer, and deployment target
 Watcher-Research = private research, opportunity scouting, market signals, and experiments
 ```
 
@@ -25,13 +25,13 @@ Harbor owns the public integration layer.
 | Public release boundary | Only Harbor-facing code should deploy publicly. |
 | Public-safe filtering | No Grace-HQ internals, Swarm internals, private memory, agent experiments, or raw research leaks into public releases. |
 | Product packaging | Harbor turns approved Grace functionality into usable public/family products. |
-| Deployment readiness | Harbor-Public is the only repo that should connect to deployment when ready. |
+| Deployment readiness | Harbor-HQ is the only repo that should connect to deployment when ready. |
 | User-facing clarity | Harbor features should make sense to a normal family or customer without exposing internal Grace machinery. |
 
 ## Golden Deployment Rule
 
 ```text
-Only Harbor-Public connects to Vercel or public deployment.
+Only Harbor-HQ connects to Vercel or public deployment.
 ```
 
 Grace-HQ stays private.
@@ -140,6 +140,6 @@ Then do not move it into Harbor until William approves it.
 
 ## Decision
 
-Keep this file as Harbor-Public's clean boundary doctrine.
+Keep this file as Harbor-HQ's clean boundary doctrine.
 
 Do not migrate the old legacy Harbor integration doc as-is. The old file can stay in the legacy repo until archive/deletion.
