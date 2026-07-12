@@ -1,0 +1,1 @@
+Reception app icon assets for browser bookmarks, iOS Home Screen, and Android installation.
