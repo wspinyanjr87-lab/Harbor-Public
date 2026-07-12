@@ -325,5 +325,171 @@
     "imageUrl": "/recipes/chicken-casserole.png",
     "isPublished": true,
     "sortOrder": 10
+  },
+  {
+    "title": "Garlic Butter Shrimp and Rice",
+    "slug": "garlic-butter-shrimp-and-rice",
+    "category": "Dinner",
+    "description": "Juicy shrimp in a buttery garlic sauce served over fluffy rice for a quick coastal-inspired family dinner.",
+    "servings": 6,
+    "prepMinutes": 10,
+    "cookMinutes": 25,
+    "difficulty": "Easy",
+    "budgetLevel": "$$",
+    "ingredients": [
+      { "name": "large peeled and deveined shrimp", "quantity": 1.5, "unit": "lb", "groceryCategory": "Meat & Protein" },
+      { "name": "white rice", "quantity": 2, "unit": "cups", "groceryCategory": "Pantry" },
+      { "name": "chicken broth", "quantity": 4, "unit": "cups", "groceryCategory": "Pantry" },
+      { "name": "butter", "quantity": 5, "unit": "tbsp", "groceryCategory": "Dairy" },
+      { "name": "garlic cloves", "quantity": 5, "unit": "whole", "groceryCategory": "Produce" },
+      { "name": "lemon", "quantity": 1, "unit": "whole", "groceryCategory": "Produce" },
+      { "name": "chopped parsley", "quantity": 3, "unit": "tbsp", "groceryCategory": "Produce" },
+      { "name": "red pepper flakes", "quantity": 0.25, "unit": "tsp", "groceryCategory": "Pantry", "optional": true }
+    ],
+    "steps": [
+      "Rinse the rice and cook it in the chicken broth according to the package directions.",
+      "Pat the shrimp dry and season lightly with salt and pepper.",
+      "Melt 2 tablespoons of butter in a large skillet over medium-high heat and cook the shrimp for 1 to 2 minutes per side until pink, then transfer them to a plate.",
+      "Reduce the heat to medium and add the remaining butter, minced garlic, and red pepper flakes if using. Cook for 30 seconds.",
+      "Return the shrimp to the skillet and toss with the garlic butter, lemon juice, and parsley.",
+      "Fluff the rice, spoon the shrimp and garlic butter over it, and serve with lemon wedges."
+    ],
+    "tags": ["Coastal Inspired", "Quick Dinner", "Rice Bowl", "Seafood"],
+    "imageUrl": "/recipes/garlic-butter-shrimp-and-rice.png",
+    "isPublished": true,
+    "sortOrder": 11
+  },
+  {
+    "title": "Harbor Breakfast",
+    "slug": "harbor-breakfast",
+    "category": "Breakfast",
+    "description": "A classic family breakfast plate with creamy scrambled eggs, crisp bacon, buttered toast, and fresh fruit.",
+    "servings": 4,
+    "prepMinutes": 10,
+    "cookMinutes": 20,
+    "difficulty": "Easy",
+    "budgetLevel": "$$",
+    "ingredients": [
+      { "name": "large eggs", "quantity": 8, "unit": "whole", "groceryCategory": "Dairy" },
+      { "name": "bacon", "quantity": 12, "unit": "slices", "groceryCategory": "Meat & Protein" },
+      { "name": "sandwich bread", "quantity": 8, "unit": "slices", "groceryCategory": "Bakery" },
+      { "name": "milk", "quantity": 0.25, "unit": "cup", "groceryCategory": "Dairy" },
+      { "name": "butter", "quantity": 3, "unit": "tbsp", "groceryCategory": "Dairy" },
+      { "name": "mixed berries", "quantity": 2, "unit": "cups", "groceryCategory": "Produce", "optional": true }
+    ],
+    "steps": [
+      "Cook the bacon in a large skillet or in a 400°F oven until crisp, then drain it on paper towels.",
+      "Whisk the eggs with the milk, a pinch of salt, and black pepper.",
+      "Melt 1 tablespoon of butter in a nonstick skillet over medium-low heat.",
+      "Add the eggs and stir gently until soft curds form and the eggs are just set.",
+      "Toast the bread and spread it with the remaining butter.",
+      "Divide the eggs, bacon, toast, and berries among four plates and serve warm."
+    ],
+    "tags": ["Classic Breakfast", "Family Morning", "Protein", "Weekend"],
+    "imageUrl": "/recipes/harbor-breakfast.png",
+    "isPublished": true,
+    "sortOrder": 12
+  },
+  {
+    "title": "Harbor Breakfast French Toast",
+    "slug": "harbor-breakfast-french-toast",
+    "category": "Breakfast",
+    "description": "Golden cinnamon French toast topped with berries, bananas, and maple syrup for a cozy family breakfast.",
+    "servings": 6,
+    "prepMinutes": 10,
+    "cookMinutes": 20,
+    "difficulty": "Easy",
+    "budgetLevel": "$",
+    "ingredients": [
+      { "name": "thick-cut sandwich bread", "quantity": 12, "unit": "slices", "groceryCategory": "Bakery" },
+      { "name": "large eggs", "quantity": 6, "unit": "whole", "groceryCategory": "Dairy" },
+      { "name": "milk", "quantity": 1.5, "unit": "cups", "groceryCategory": "Dairy" },
+      { "name": "vanilla extract", "quantity": 2, "unit": "tsp", "groceryCategory": "Pantry" },
+      { "name": "ground cinnamon", "quantity": 1, "unit": "tsp", "groceryCategory": "Pantry" },
+      { "name": "butter", "quantity": 3, "unit": "tbsp", "groceryCategory": "Dairy" },
+      { "name": "maple syrup", "quantity": 0.75, "unit": "cup", "groceryCategory": "Pantry" },
+      { "name": "mixed berries", "quantity": 2, "unit": "cups", "groceryCategory": "Produce", "optional": true },
+      { "name": "bananas", "quantity": 2, "unit": "whole", "groceryCategory": "Produce", "optional": true },
+      { "name": "powdered sugar", "quantity": 2, "unit": "tbsp", "groceryCategory": "Pantry", "optional": true }
+    ],
+    "steps": [
+      "Whisk the eggs, milk, vanilla, cinnamon, and a pinch of salt in a shallow dish.",
+      "Heat a griddle or large skillet over medium heat and melt a little butter across the surface.",
+      "Dip each bread slice in the egg mixture, coating both sides without soaking it too long.",
+      "Cook the bread in batches for 2 to 3 minutes per side until golden brown, adding more butter as needed.",
+      "Keep finished slices warm while cooking the remaining batches.",
+      "Serve with maple syrup, berries, bananas, and powdered sugar if desired."
+    ],
+    "tags": ["French Toast", "Kid Friendly", "Weekend Breakfast", "Budget"],
+    "imageUrl": "/recipes/harbor-breakfast-french-toast.png",
+    "isPublished": true,
+    "sortOrder": 13
+  },
+  {
+    "title": "Harbor Breakfast Skillet",
+    "slug": "harbor-breakfast-skillet",
+    "category": "Breakfast",
+    "description": "A hearty one-pan breakfast with crispy potatoes, smoked sausage, peppers, cheddar, and sunny eggs.",
+    "servings": 6,
+    "prepMinutes": 15,
+    "cookMinutes": 30,
+    "difficulty": "Easy",
+    "budgetLevel": "$$",
+    "ingredients": [
+      { "name": "russet potatoes", "quantity": 1.5, "unit": "lb", "groceryCategory": "Produce" },
+      { "name": "smoked sausage", "quantity": 12, "unit": "oz", "groceryCategory": "Meat & Protein" },
+      { "name": "large eggs", "quantity": 6, "unit": "whole", "groceryCategory": "Dairy" },
+      { "name": "bell peppers", "quantity": 2, "unit": "whole", "groceryCategory": "Produce" },
+      { "name": "yellow onion", "quantity": 1, "unit": "whole", "groceryCategory": "Produce" },
+      { "name": "shredded cheddar cheese", "quantity": 1, "unit": "cup", "groceryCategory": "Dairy" },
+      { "name": "vegetable oil", "quantity": 2, "unit": "tbsp", "groceryCategory": "Pantry" },
+      { "name": "green onions", "quantity": 3, "unit": "whole", "groceryCategory": "Produce", "optional": true },
+      { "name": "avocado", "quantity": 1, "unit": "whole", "groceryCategory": "Produce", "optional": true }
+    ],
+    "steps": [
+      "Dice the potatoes, sausage, bell peppers, and onion into bite-size pieces.",
+      "Heat the oil in a large oven-safe skillet over medium heat and cook the potatoes for 12 to 15 minutes until browned and nearly tender.",
+      "Add the sausage, peppers, and onion and cook for 6 to 8 minutes until the vegetables soften.",
+      "Sprinkle the cheddar over the skillet and make six small wells in the mixture.",
+      "Crack an egg into each well, cover, and cook over medium-low heat for 5 to 7 minutes until the egg whites are set.",
+      "Finish with green onions and serve with sliced avocado if desired."
+    ],
+    "tags": ["One Pan", "Hearty Breakfast", "Weekend", "Family Style"],
+    "imageUrl": "/recipes/harbor-breakfast-skillet.png",
+    "isPublished": true,
+    "sortOrder": 14
+  },
+  {
+    "title": "Chocolate Mug Cake",
+    "slug": "chocolate-mug-cake",
+    "category": "Munchies",
+    "description": "A warm single-serving chocolate cake mixed and cooked right in a mug for a fast late-night treat.",
+    "servings": 1,
+    "prepMinutes": 5,
+    "cookMinutes": 2,
+    "difficulty": "Easy",
+    "budgetLevel": "$",
+    "ingredients": [
+      { "name": "all-purpose flour", "quantity": 4, "unit": "tbsp", "groceryCategory": "Pantry" },
+      { "name": "granulated sugar", "quantity": 4, "unit": "tbsp", "groceryCategory": "Pantry" },
+      { "name": "unsweetened cocoa powder", "quantity": 2, "unit": "tbsp", "groceryCategory": "Pantry" },
+      { "name": "baking powder", "quantity": 0.125, "unit": "tsp", "groceryCategory": "Pantry" },
+      { "name": "salt", "quantity": 0.125, "unit": "tsp", "groceryCategory": "Pantry" },
+      { "name": "milk", "quantity": 3, "unit": "tbsp", "groceryCategory": "Dairy" },
+      { "name": "vegetable oil", "quantity": 2, "unit": "tbsp", "groceryCategory": "Pantry" },
+      { "name": "vanilla extract", "quantity": 0.25, "unit": "tsp", "groceryCategory": "Pantry" },
+      { "name": "chocolate chips", "quantity": 2, "unit": "tbsp", "groceryCategory": "Snacks" }
+    ],
+    "steps": [
+      "In a 12-ounce microwave-safe mug, whisk together the flour, sugar, cocoa powder, baking powder, and salt.",
+      "Add the milk, vegetable oil, and vanilla and stir until the batter is smooth with no dry pockets.",
+      "Fold in the chocolate chips, reserving a few for the top.",
+      "Microwave on high for 60 to 75 seconds, stopping when the top looks set but the center is still soft.",
+      "Let the cake cool for 1 minute before eating it from the mug."
+    ],
+    "tags": ["Chocolate", "Microwave", "Single Serving", "Late Night"],
+    "imageUrl": "/recipes/chocolate-mug-cake.png",
+    "isPublished": true,
+    "sortOrder": 15
   }
 ]
