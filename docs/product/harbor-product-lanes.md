@@ -51,7 +51,7 @@ Harbor Creator Studio
 ## Boundary
 
 ```text
-Harbor-Public = customer-facing product and revenue lanes
+Harbor-HQ = portfolio headquarters for customer-facing Harbor product and revenue lanes
 Watcher-Research = signals, scoring, opportunity research
 Grace-HQ = private source brain and internal command layer
 ```
@@ -61,9 +61,9 @@ TikTok Ideas touches research, but it is shaped like a product app, so it belong
 ## Current Decision
 
 ```text
-Harbor-Public
-  core product:
-    Harbor Family Planner Lite
+Harbor-HQ coordinates product lanes. Standalone product repositories now own implementation:
+  Harbor-Family-Planner = Harbor Family Planner Lite
+  Harbor-Reception = Harbor Reception
 
   booster products:
     TikTok Ideas / Creator Studio
@@ -74,4 +74,4 @@ Harbor-Public
 
 Keep TikTok Ideas parked as its own repo for now.
 
-Do not merge it into Harbor-Public until Harbor Family Planner Lite has a clean build and live test path.
+Do not merge parked experiments into Harbor product repositories until they have a clear owner, clean build, and live test path.
